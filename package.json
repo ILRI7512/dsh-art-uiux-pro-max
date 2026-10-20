@@ -29,7 +29,7 @@
     "plugins/art-uiux/locale/*.json"
   ],
   "scripts": {
-    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.build.json && node ./scripts/finalize-client-bundle.mjs",
     "typecheck": "node ./node_modules/typescript/bin/tsc -p tsconfig.json",
     "test": "node --test --test-concurrency=1 tests/unit/*.test.ts tests/integration/*.test.ts",
     "test:unit": "node --test tests/unit/*.test.ts",
