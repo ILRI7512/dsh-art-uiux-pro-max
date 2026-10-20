@@ -114,5 +114,11 @@ python3 -m pytest tests/ -q     # 36 passed
 
 ## 许可
 
-仓库当前未附许可证。vendored 引擎来自 dsh-autolearn（该仓库亦未附许可证）。
-若要作为开源项目分发，请先确定许可证（例如 MIT / Apache-2.0）。
+**MIT**，全文见 [LICENSE](LICENSE)。
+
+`dsh_autonomous_learning/` 是从 [dsh-autolearn](https://github.com/ILRI7512/dsh-autolearn) vendor 的引擎，
+同样以 MIT 发布（见其仓库 LICENSE）。
+
+MIT 只覆盖本仓库的代码与文档。学习过程中引用的第三方资料（官方文档、规范原文、产品页面等）
+仍归原作者所有，见资源注册表的 `license_notes` 字段与 `docs/` 中的出处标注；
+知识库只保存归纳结论与来源链接，不复制原文全文或素材本体。

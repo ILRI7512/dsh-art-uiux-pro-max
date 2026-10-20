@@ -26,5 +26,6 @@
       "immediately": true,
       "inject": []
     }
-  }
+  },
+  "license": "MIT"
 }
