@@ -1,19 +1,6 @@
-# Art UI/UX Pro Max（配置型 bundle）：把 Python MCP 服务注册为 stdio 服务器。
-# 路径全部来自环境变量或 profile patch 覆盖，不写死在代码里。
-- insert:
-    - id: art-uiux-mcp
-      name: '@deepseek-ai/dsh-mcp-client'
-      config:
-        serverName: artuiux
-        transport: stdio
-        command: !!js "process.env.DSH_ART_PYTHON || (process.platform === 'win32' ? 'python' : 'python3')"
-        args:
-          - '-m'
-          - 'art_uiux.mcp_server'
-        cwd: !!js "process.env.DSH_ART_WORKDIR || process.cwd()"
-        env:
-          DSH_ART_WORKDIR: !!js "process.env.DSH_ART_WORKDIR || process.cwd()"
-          PYTHONPATH: !!js "process.env.DSH_ART_WORKDIR || process.cwd()"
-          PYTHONUTF8: '1'
-          PYTHONIOENCODING: 'utf-8'
-        failOnStartupError: false
+# Art UI/UX Pro Max（TS 原生插件）
+#
+# 13 个工具由 dist/plugin/index.js 直接注册到 ctx.tools；
+# 不再启动 Python / MCP 子进程，因此本 bundle 不需要向 profile 树插入 entry。
+# 需要 MCP 兼容层时，单独运行 `node dist/mcp/server.js`。
+[]

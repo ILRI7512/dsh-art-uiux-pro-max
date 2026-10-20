@@ -1,3 +1,7 @@
+> **历史报告（Python 时代）**：本文件记录迁移前的实现与实测数据。Python 代码已移除，
+> 文中的 `python3 scripts/...` 命令与 `art_uiux/` 路径不再可用；可复现的当前实现见
+> [README](../README.md) 与 [MIGRATION-TS](MIGRATION-TS.md)。指标不自动继承到 TS 运行时。
+
 # 交付报告 · DSH Art UI/UX Pro Max
 
 > 生成时间 2026-10-20。所有数字来自实际运行，不是估算。

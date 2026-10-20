@@ -1,0 +1,55 @@
+{
+  "name": "@local/art-uiux",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DSH Art UI/UX Pro Max: TypeScript knowledge engine for design taxonomy, evidence-based case analysis, hybrid retrieval, and a seven-step design workflow.",
+  "engines": {
+    "node": ">=22.6"
+  },
+  "main": "./dist/plugin/index.js",
+  "exports": {
+    ".": "./dist/plugin/index.js",
+    "./client": "./dist/client/index.js",
+    "./mcp": "./dist/mcp/server.js",
+    "./cli": "./dist/cli.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "art-uiux": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "plugins/art-uiux/cordis.patch.yml",
+    "plugins/art-uiux/icon.svg",
+    "plugins/art-uiux/locale/*.json"
+  ],
+  "scripts": {
+    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.build.json",
+    "typecheck": "node ./node_modules/typescript/bin/tsc -p tsconfig.json",
+    "test": "node --test --test-concurrency=1 tests/unit/*.test.ts tests/integration/*.test.ts",
+    "test:unit": "node --test tests/unit/*.test.ts",
+    "cli": "node dist/cli.js",
+    "eval": "node dist/cli.js eval"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./plugins/art-uiux/cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    }
+  },
+  "dependencies": {
+    "parse5": "^7.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  },
+  "license": "MIT"
+}

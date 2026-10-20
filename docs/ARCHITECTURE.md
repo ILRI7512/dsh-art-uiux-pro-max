@@ -1,50 +1,54 @@
-# 架构说明（全部基于实际读过的源码，不含假设）
+# 架构说明（TypeScript 版本）
 
-核查对象：`/root/dsh-autolearn`（v1.1.0，main 分支，2026-10-20 拉取）。
+本文件描述当前实现；Python 时代的历史核查记录见 git 历史与旧报告。
 
-## 一、被复用的引擎事实
+## 一、分层
 
-| 事实 | 证据位置 |
-| --- | --- |
-| 引擎是 Python 包 `dsh_autonomous_learning`，65 个 .py，约 1.4 万行 | `find` + `wc -l` |
-| 存储在 SQLite，23 张表（projects/tasks/sources/documents/chunks/verification_records/conflicts/duplicates/gaps/practice_tasks/...） | `storage/metadata_store.py` 的 `CREATE TABLE` |
-| 向量索引单独一层：默认特征哈希（离线、确定性），可重建 | `storage/vector_store.py` |
-| 知识分区是**固定枚举** 7 个 + `pending_knowledge` | `core/models.py::Partition`、`knowledge/partitions.py::PARTITION_SPECS` |
-| 每个 Chunk 有单值 `topic` / `subtopic` 字段和自由 `metadata` dict | `core/models.py::Chunk` |
-| Source 有 `location/license_status/quality/fetch_ok/error` + 自由 `metadata` | `core/models.py::Source` |
-| 学习等级已内置 L0–L5 枚举（本项目只用 L0–L4） | `core/models.py::LearningLevel` |
-| 工具注册表强制统一返回结构，并按风险分级（`tool_risks.json`） | `tools/registry.py`、`tool_risks.json` |
-| 网络默认关闭：`security.allow_network=False`，可设域名白名单 | `config.py`、`security/permissions.py` |
-| 模型层支持 OpenAI 兼容 provider，密钥只从环境变量读 | `config.py::ModelConfig` |
-| MCP 入口 `python3 -m dsh_autonomous_learning.plugin`，实测 63 个工具 | 手工 stdio 握手 |
-| 引擎 pytest：96 passed | `python3 -m pytest dsh_autonomous_learning/tests` |
+| 层 | 位置 | 职责 |
+| --- | --- | --- |
+| 领域 | `src/domain/` | 12 分类、注册表、提取、案例证据、七步工作流、组件知识、指标、双语术语 |
+| 基础设施 | `src/infra/` | HTML 分节、受控 HTTP、SQLite 存储、BLAKE2b 特征哈希、tokenizer |
+| 应用 | `src/application/` | `ArtServices` 统一业务逻辑 + 13 个工具 Schema |
+| 适配 | `src/plugin/`、`src/mcp/`、`src/cli.ts`、`src/client/` | DSH 原生插件、MCP stdio、CLI、设置卡 |
 
-## 二、本项目的接入决策
+依赖方向：`domain` 不依赖 `infra`（`retrieval.ts` 以 `KnowledgeStore` 类型注入）；
+`application` 组合两者；适配层只做参数校验、路由与展示。
 
-1. **不修改引擎**：`dsh_autonomous_learning/` 原样 vendor 进本项目，只作为依赖使用。
-2. **12 个主分类 = `Chunk.topic`**：不扩 Partition 枚举，避免碰引擎的状态机；
-   辅助标签进 `Chunk.metadata["secondary_categories"]`，满足「唯一主分类 + 多标签、不重复入库」。
-3. **资源注册表 = 种子 + 运行期状态分离**：
-   `art_uiux/resources.seed.json`（39 条，只读）＋ `data/registry.json`（真实探测/学习状态）。
-4. **三态分离**：`access_status`（能不能访问）、`learn_status`（学到哪一步）、
-   `learned_chunks`（真正入库多少条）互不替代，杜绝「登记即完成」。
-5. **robots.txt 前置**：`art_uiux/checker.py` 先读 robots 再抓；禁止即记 `blocked`，不绕过。
+## 二、存储
 
-## 三、目录
+`data/knowledge.sqlite3`（`node:sqlite`，WAL）：
 
-```
-art_uiux/
-  taxonomy.py          12 主分类 + 提取字段定义 + 校验规则
-  registry.py          15 字段校验、状态机、种子/状态合并
-  checker.py           robots → HTTP → 结论（含软拦截识别）
-  resources.seed.json  39 条资源种子
-scripts/check_access.py  可重复执行的探测 CLI
-docs/                 架构与交付文档
-plugins/              DSH 插件包（待接）
-dsh_autonomous_learning/  vendored 引擎
-```
+- `projects`：项目元数据（默认 `prj_art_uiux`）。
+- `chunks`：知识行，含 `topic`（唯一主分类）、`level`、来源、核验状态、`metadata` JSON。
+- `chunk_tokens`：BM25 倒排（拉丁词 + 中文 bigram）。
+- `chunk_vectors`：512 维 Float32 向量（BLAKE2b 特征哈希，L2 归一化）。
 
-## 四、当前完成度（不夸大）
+写入是单事务：行、倒排、向量一起更新；同项目 `content_hash` 去重；更新同一 `chunk_id`
+会重建倒排与向量。检索先用 project/topic/level/verification 过滤出允许集，再排序。
 
-- 已完成：架构核查、12 分类定义、39 条资源注册表、真实访问探测、robots 合规。
-- 未完成：知识提取入库、语义检索验证、8 项设计任务验证、DSH 插件接线。
+## 三、检索
+
+1. 查询先做设计领域双语扩展（中文命中术语时追加英文等价词）。
+2. 向量：暴力余弦（百条级语料足够，无 ANN 依赖）。
+3. BM25：k1=1.5、b=0.75，df 只在过滤后的集合内统计。
+4. RRF 融合（k=60）。
+5. 重排：分类亲和度 ×(1+0.35×aff) 与词面重叠 ×(1+0.6×overlap)，保留 `base_score`、
+   `category_affinity`、`lexical_overlap`、`final_score` 便于复核。
+6. 每条命中带 `source.url`、`level`、`verification_status`、`warnings`；空结果明确说“证据不足”。
+
+`rerank=ce` 没有内置模型，会显式降级并告警，不伪造 CE 分数。
+
+## 四、质量与安全约束
+
+- 等级：L1 仅解析/归类；L2 需要原则 + 显式约束语境；L3/L4 只能来自交叉验证/真实任务。
+- 案例证据：`fact` 可到 L2，`inference` 到 L1，`opinion` 不入库；能力边界声明不入库。
+- 抓取：robots 前置、256 KB 上限、20 s 超时、最多 6 跳重定向、每跳 URL 安全校验。
+- SSRF：默认拒绝 loopback/RFC1918/link-local/ULA；DNS 解析结果也检查；显式配置才放行私网。
+- 设置：`allowNetwork=false` 直接失败；数据目录必须绝对路径；设置原子写入。
+
+## 五、扩展点
+
+- 新增主分类：改 `src/domain/taxonomy-data.ts` 并补校验/测试。
+- 新增工具：在 `src/application/services.ts` 实现业务，在 `tools.ts` 加 Schema；
+  CLI 与 MCP 按需接线，禁止在适配层复制业务逻辑。
+- 换向量方案：实现 `Embedder` 接口并保证 `embedderId` 变化时重建索引。

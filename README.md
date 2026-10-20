@@ -1,148 +1,164 @@
 # DSH Art UI/UX Pro Max
 
-基于 [dsh-autolearn](https://github.com/ILRI7512/dsh-autolearn) 的真实架构构建的 **UI/UX 自主学习插件**。
+一个 **TypeScript 原生**的 UI/UX 设计知识引擎与 DSH 插件。
 
 它不做三件事：不收藏截图、不把网页可访问当成学习完成、不把审美判断当成可用性结论。
 它做一件事：把公开资料变成**可检索、可追溯、可量化评测**的设计知识，并能反向支撑真实设计任务。
 
+> 运行时代码已全部迁移到 TypeScript（Node ≥ 22.6，本机验证 24.19）；Python 实现与
+> vendored Python 引擎已移除，迁移细节见 [docs/MIGRATION-TS.md](docs/MIGRATION-TS.md)。
+> `docs/` 下的旧交付/评测报告是 Python 时代的历史材料，已加注说明。
+
 ## 架构
 
 ```
-dsh_autonomous_learning/   引擎（vendor 自 dsh-autolearn v1.1.0，未改动一行）
-art_uiux/                  本项目的三层扩展
-  taxonomy.py              12 个主分类 × 12 项元数据 + 16 个提取字段
-  registry.py              资源注册表（15 字段 / 三态分离 / 种子与运行期状态解耦）
-  checker.py               robots 前置探测 + 软拦截识别
-  extract.py               分节、分类（含领域先验）、16 字段模板、质量门槛
-  case_analyzer.py         Design Case Analyzer（fact / inference / opinion 三分）
-  design_workflow.py       七步设计工作流 + WCAG 对比度实算 + 10 项审计
-  retrieval.py             混合检索 + 分类亲和度 + 词面重叠重排
-  bilingual.py             中英设计术语桥接（70 条）
-  rerank.py                多语言 cross-encoder 精排
-  components.py            组件学习引擎（25 字段组件知识）
-  metrics.py               P/R/MRR/nDCG/bootstrap
-plugins/art-uiux/          DSH 插件包（MCP 13 工具 + 设置卡）
+src/
+  domain/          设计领域：12 分类、注册表、提取、案例证据、七步工作流、组件学习
+  infra/           HTML 分节、受控 HTTP、SQLite 存储、BLAKE2b 特征哈希、BM25/RRF
+  application/     服务层 + 13 个原生工具
+  plugin/          DSH 入口与设置/统计路由
+  client/          设置卡（编译为 dist/client/index.js）
+  mcp/             可选 MCP stdio 兼容层
+  cli.ts           命令行
+resources/seed.json  62 条资源种子（15 字段，只读）
+plugins/art-uiux/    DSH 插件清单、空 patch、图标、locale
+tests/              51 个 node:test 测试（单元 + 集成）
 ```
 
-12 个主分类落在引擎的单值字段 `Chunk.topic`，辅助标签进 `metadata` —— 不碰引擎的 Partition 枚举。
+### 数据流
 
-## 安装到 DSH
-
-**一条命令（推荐）**：
-
-```bash
-python3 scripts/install_plugin.py --profile web --dry-run   # 先看会做什么
-python3 scripts/install_plugin.py --profile web             # 实际安装
+```mermaid
+flowchart LR
+  S[资源种子] --> R[注册表]
+  R -->|check| P[robots + HTTP 探测]
+  P -->|reachable| F[抓取正文]
+  F --> X[分节 / 分类 / 16 字段]
+  X --> Q{设计相关度 + 最少字段}
+  Q -->|通过| DB[(SQLite: chunks + tokens + vectors)]
+  Q -->|拒绝| G[extraction_gaps / skipped]
+  DB --> H[向量 + BM25 + RRF]
+  H --> A[分类亲和度 / 词面重排]
+  A --> T[带来源/等级/warnings 的结果]
 ```
-
-它等价于下面两步，缺一不可：
-
-```bash
-dsh plugin --profile web add link:/root/dsha-art-uiux-pro-max/plugins/art-uiux
-# 再把 "@local/art-uiux" 写进 profile 的 dsh.profile.bundles
-```
-
-为什么不能只用 `dsh plugin --profile web add @local/art-uiux` 这种写法：
-
-1. `dsh plugin` 是 **pnpm 透传**，只做依赖解析与 `node_modules` 链接；
-2. DSH 启动时按 `dsh.profile.bundles` 顺序叠 patch 层，**没进 bundles 的包不会被挂载**；
-3. 本项目是 `@local/*` 私有工作区包，npm 上不存在，所以直接 `add` 解析必然失败。
-
-安装完成后需重启 DSH（`patchReload: startup`）。
 
 ## 快速开始
 
 ```bash
-# 1. 依赖（引擎 + 向量模型 + 精排模型）
-python3 -m pip install --break-system-packages -r dsh_autonomous_learning/requirements.txt
-python3 -m pip install --break-system-packages "mcp>=1.2,<2" torch sentence-transformers
+npm install
+# Android / 共享存储不支持软链接时： npm install --no-bin-links
+npm run build
+npm test
 
-# 2. 资源探测（写真实状态，不写「已学习」）
-python3 scripts/check_access.py
+# 资源探测（写 access_status，不代表已学习）
+node dist/cli.js check --limit 5
 
-# 3. 抓取并入库
-python3 scripts/ingest.py --all --max-units 10
+# 正式抓取入库（写 learn_status 与真实片段数）
+node dist/cli.js ingest --only m3-material,nng --max-units 8
 
-# 4. 案例学习
-python3 scripts/analyze_case.py --resource linear
+# 检索（中文会自动补英文设计术语）
+node dist/cli.js search "深色模式下的对比度怎么控制" --top 5
 
-# 5. 设计任务（七步工作流）
-python3 scripts/design_task.py --task "做一个金融行情终端首页"
+# 七步设计工作流（产出 docs/tasks/*.md/html/ds.json）
+node dist/cli.js design --task "做一个金融行情终端首页"
 
-# 6. 组件学习
-python3 scripts/learn_components.py --keys shadcn-ui,ant-design,vico
+# 案例证据分析（产出 docs/cases/*.md/json）
+node dist/cli.js case --resource linear
 
-# 7. 检索评测（可量化）
-python3 scripts/eval_retrieval.py
+# 组件库学习（GitHub 元数据 + README + 文件树，不下载源码包）
+node dist/cli.js components --keys shadcn-ui,ant-design,vico
+
+# 真实统计
+node dist/cli.js stats
 ```
 
-向量模型在 `dsh_autonomous_learning/config.json` 配置：
+也可以 `npm link` 后使用 `art-uiux` 命令，或 `npm run cli -- <command>`。
 
-```json
-"embedding": {
-  "provider": "sentence_transformers",
-  "dim": 384,
-  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-}
+## 安装到 DSH
+
+```bash
+npm install
+npm run build
+dsh plugin --profile web add link:/path/to/dsh-art-uiux-pro-max
 ```
 
-换模型后必须重建索引（`store.rebuild_index()`，本机 143 条耗时 126s）。
+再把 `"@local/art-uiux"` 加入该 profile 的 `dsh.profile.bundles`，重启 DSH。
+插件入口直接注册 13 个原生工具，`plugins/art-uiux/cordis.patch.yml` 是空 patch，
+不启动任何 Python 或 MCP 子进程。
 
-## 状态字段（三者不可互相替代）
+设置卡（设置 → 插件 → Art UI/UX）可改数据目录、网络开关、私网开关、单次学习上限与重排策略。
 
-| 字段 | 含义 |
+## 13 个原生工具
+
+| 工具 | 作用 |
 | --- | --- |
-| `access_status` | 能不能访问：reachable / restricted / blocked / failed |
-| `learn_status` | 学到哪一步：not_started / partial / learned / failed |
-| `learned_chunks` | 真正入库的知识条数 |
+| `art_taxonomy` | 12 个主分类 × 12 项元数据、16 个提取字段 |
+| `art_registry_list` | 种子 + 运行期状态合并视图 |
+| `art_registry_check` | robots 前置的真实访问探测 |
+| `art_learn` | 抓取、分节、分类、16 字段模板、正式入库 |
+| `art_case_analyze` | fact / inference / opinion 三分证据与数值冲突登记 |
+| `art_search` | 向量 + BM25 + RRF + 亲和度重排，带来源/等级/warnings |
+| `art_route_task` | 任务类型与相关分类 |
+| `art_directions` | 有实质区别的视觉方向（拒绝默认陈词滥调） |
+| `art_design_system` | Tokens + CSS + WCAG 对比度实算 |
+| `art_audit` | 10 项设计审计，不能测的标 `unmeasured` |
+| `art_responsive` | 多断点布局矩阵（静态推断） |
+| `art_backgrounds` | 三种背景方案 + 文字对比度实算 |
+| `art_stats` | 资源/片段/等级/索引完整性真实统计 |
 
-## 质量等级
+## 知识模型
 
-L0 原始资料 → L1 已解析并分类 → L2 已提取原则+适用场景 → L3 交叉验证 → L4 设计任务或工程验证。
+- **唯一主分类**：`chunk.topic` 只能是 12 个 key 之一；辅助标签写 `metadata.secondary_categories`。
+- **等级必须挣得**：L1 仅解析/归类；L2 需要原则 + 显式约束语境；L3/L4 只能来自交叉验证或真实任务。
+- **三态分离**：`access_status`（能否访问）、`learn_status`（学到哪一步）、`learned_chunks`（真正入库条数）不可互替。
+- **去重**：同项目同 `content_hash` 直接跳过并计入 duplicates；更新同一 `chunk_id` 会重建倒排与向量。
+- **不可入库的内容**：营销文案、能力边界声明、纯主观 opinion、设计相关度不足的段落。
 
-当前（2026-10-20）：**143 条片段，L1=80、L2=53、L3=2、L4=8**。
-L3 来自 w3.org × web.dev 的跨来源核验；L4 来自真实页面的契约测试与渲染复核。
+## 检索与评测
 
-## 检索指标（18 条查询 × 人工 qrels）
+默认检索链路是：512 维 BLAKE2b 特征哈希向量 + BM25 + RRF 融合，再用分类亲和度与词面重叠重排。
+这是确定性、离线、可复现的方案，**不是神经语义模型**；中文查询会经 63 条设计术语表做确定性扩展。
 
-| 系统 | P@1 | MRR@10 | nDCG@5 | 延迟 |
-| --- | --- | --- | --- | --- |
-| 仅向量 | 0.389 | 0.462 | 0.493 | 数十 ms |
-| 仅 BM25 | 0.278 | 0.301 | 0.332 | 十 ms 级 |
-| RRF 混合 | 0.389 | 0.408 | 0.451 | 数十 ms |
-| + 规则重排 | 0.556 | 0.597 | 0.690 | ~200 ms |
-| + 交叉编码器 | **0.667** | **0.694** | **0.780** | ~2100 ms |
+交叉编码器（`rerank=ce`）没有打进 TS 运行时：请求时会明确降级为规则重排并写入 warning，
+不会返回伪造的 CE 分数。
 
-详见 [docs/EVAL-REPORT.md](docs/EVAL-REPORT.md)，qrels 在 `eval/qrels.json`，可直接改标签重跑。
+本仓库不包含生产知识库（`data/` 被忽略），因此不宣称任何检索指标。先 `check` + `ingest`，
+再运行：
 
-## 文档
+```bash
+node dist/cli.js eval
+```
 
-- [docs/FINAL-REPORT.md](docs/FINAL-REPORT.md) 交付总览（12 项 + 组件 9 项逐条对照）
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) 引擎核查结论（每条标明证据位置）
-- [docs/EVAL-REPORT.md](docs/EVAL-REPORT.md) 检索评测与 A/B
-- [docs/tasks/](docs/tasks/) 8 项设计任务 · [docs/cases/](docs/cases/) 6 个案例 · [docs/components/](docs/components/) 组件分析
-- [docs/practice/](docs/practice/) 10 项组件实践（页面可用浏览器直接打开）
+qrels 在 `eval/qrels.json`（18 条查询），逐条结果写入 `eval/runs.json`，报告写入 `docs/EVAL-REPORT.md`。
+旧版 Python 报告中的 143 片段指标无法在本仓库复现，已标注为历史数据。
 
-## 能力边界（如实）
+## 安全边界
 
-- 无浏览器级渲染：本机 Chromium 在 proot 下无法启动，改用 WeasyPrint（排版引擎）复核，已抓到 2 个真实问题。
-- 无用户研究数据：全项目未产生任何用户测试结论。
-- 组件字段覆盖浅：仅 3 个组件读到源码正文，其余参数/状态为 `unknown`。
-- 语料 143 条偏小，检索指标对单条差异敏感。
+- **robots.txt 前置**：禁止路径记 `blocked`，不绕过；401/403/404 有区分处理。
+- **SSRF 防护**：默认拒绝 loopback、RFC1918、link-local、IPv6 ULA 与解析到私网的域名；
+  重定向每一跳重新校验；设置里显式开启才允许私网。
+- **抓取限额**：256 KB、20 s 超时、最多 6 跳重定向、拒绝非文本 content-type。
+- **网络开关**：`allowNetwork=false` 时抓取直接失败，不会静默返回缓存或空结果。
+- **不执行任何页面代码**；MCP 仅 stdio，不监听端口。
 
 ## 测试
 
 ```bash
-python3 -m pytest tests/ -q     # 36 passed
+npm test        # 51 passed（单元 + 集成）
+npm run typecheck
 ```
+
+覆盖：分类校验、注册表状态隔离、分节/分类/等级、案例证据分级、WCAG 对比度与审计状态、
+组件分类与知识等级、IR 指标、双语扩展、SQLite 入库/去重/过滤/检索、robots/重定向/SSRF、
+设置校验、服务层端到端、MCP 握手、插件注册。
+
+## 能力边界（如实）
+
+- 无浏览器级渲染：不产出真实截图，不判断视觉美观；布局矩阵是静态推断。
+- 无用户研究数据：不生成任何用户测试、转化率、可用性结论。
+- 组件字段覆盖浅：只读元数据/README/文件树或单文件源码，不构建、不运行。
+- 语料规模由你实际入库决定；种子只有 62 条资源，且大多尚未学习。
 
 ## 许可
 
-**MIT**，全文见 [LICENSE](LICENSE)。
-
-`dsh_autonomous_learning/` 是从 [dsh-autolearn](https://github.com/ILRI7512/dsh-autolearn) vendor 的引擎，
-同样以 MIT 发布（见其仓库 LICENSE）。
-
-MIT 只覆盖本仓库的代码与文档。学习过程中引用的第三方资料（官方文档、规范原文、产品页面等）
-仍归原作者所有，见资源注册表的 `license_notes` 字段与 `docs/` 中的出处标注；
+MIT，见 [LICENSE](LICENSE)。学习过程中引用的第三方资料仍归原作者所有；
 知识库只保存归纳结论与来源链接，不复制原文全文或素材本体。

@@ -1,6 +1,0 @@
-{
-  "meta": {
-    "title": "Autolearn Approval Gate",
-    "description": "Sends high-risk autonomous-learning tool calls to the DSH approval dialog before they touch the knowledge base."
-  }
-}

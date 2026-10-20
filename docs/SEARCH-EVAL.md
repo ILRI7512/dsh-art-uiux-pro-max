@@ -1,3 +1,7 @@
+> **历史报告（Python 时代）**：本文件记录迁移前的实现与实测数据。Python 代码已移除，
+> 文中的 `python3 scripts/...` 命令与 `art_uiux/` 路径不再可用；可复现的当前实现见
+> [README](../README.md) 与 [MIGRATION-TS](MIGRATION-TS.md)。指标不自动继承到 TS 运行时。
+
 > **已被 `docs/EVAL-REPORT.md` 取代。** 本文件是最早的粗测（只按分类命中计数、无 qrels），
 > 保留仅作过程记录，不作为结论依据。
 
