@@ -26,6 +26,30 @@ plugins/art-uiux/          DSH 插件包（MCP 13 工具 + 设置卡）
 
 12 个主分类落在引擎的单值字段 `Chunk.topic`，辅助标签进 `metadata` —— 不碰引擎的 Partition 枚举。
 
+## 安装到 DSH
+
+**一条命令（推荐）**：
+
+```bash
+python3 scripts/install_plugin.py --profile web --dry-run   # 先看会做什么
+python3 scripts/install_plugin.py --profile web             # 实际安装
+```
+
+它等价于下面两步，缺一不可：
+
+```bash
+dsh plugin --profile web add link:/root/dsha-art-uiux-pro-max/plugins/art-uiux
+# 再把 "@local/art-uiux" 写进 profile 的 dsh.profile.bundles
+```
+
+为什么不能只用 `dsh plugin --profile web add @local/art-uiux` 这种写法：
+
+1. `dsh plugin` 是 **pnpm 透传**，只做依赖解析与 `node_modules` 链接；
+2. DSH 启动时按 `dsh.profile.bundles` 顺序叠 patch 层，**没进 bundles 的包不会被挂载**；
+3. 本项目是 `@local/*` 私有工作区包，npm 上不存在，所以直接 `add` 解析必然失败。
+
+安装完成后需重启 DSH（`patchReload: startup`）。
+
 ## 快速开始
 
 ```bash
