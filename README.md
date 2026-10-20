@@ -22,7 +22,7 @@ src/
   cli.ts           命令行
 resources/seed.json  62 条资源种子（15 字段，只读）
 plugins/art-uiux/    DSH 插件清单、空 patch、图标、locale
-tests/              51 个 node:test 测试（单元 + 集成）
+tests/              52 个 node:test 测试（单元 + 集成）
 ```
 
 ### 数据流
@@ -143,7 +143,7 @@ qrels 在 `eval/qrels.json`（18 条查询），逐条结果写入 `eval/runs.js
 ## 测试
 
 ```bash
-npm test        # 51 passed（单元 + 集成）
+npm test        # 52 passed（单元 + 集成）
 npm run typecheck
 ```
 

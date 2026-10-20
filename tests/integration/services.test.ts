@@ -114,3 +114,29 @@ test('Android 任务产出 Kotlin 且审计全 unmeasured', async () => {
     assert.equal(result.audit.counts.unmeasured, 10)
   } finally { services.close(); cleanup(root) }
 })
+
+test('旧 Python 知识库可迁移，保留 chunk_id 与内容', async () => {
+  const { DatabaseSync } = await import('node:sqlite')
+  const root = makeRoot([seedResource()])
+  const legacyPath = join(root, 'legacy.sqlite3')
+  const legacy = new DatabaseSync(legacyPath)
+  legacy.exec(`CREATE TABLE chunks(
+    chunk_id TEXT, project_id TEXT, topic TEXT, title TEXT, content TEXT, content_hash TEXT,
+    level TEXT, partition TEXT, source_url TEXT, source_title TEXT, metadata TEXT
+  )`)
+  legacy.prepare('INSERT INTO chunks VALUES(?,?,?,?,?,?,?,?,?,?,?)').run(
+    'chunk_legacy1', 'prj_art_uiux', 'color_system', '对比度底线',
+    '正文与背景的对比度建议不低于 4.5:1。', 'hash-legacy', 'L2', 'uiux_knowledge',
+    'https://example.com/legacy', 'Legacy', '{}',
+  )
+  legacy.close()
+  const services = new ArtServices({ root, dataDir: join(root, 'data') })
+  try {
+    const result = services.importLegacy(legacyPath) as any
+    assert.equal(result.found, 1)
+    assert.equal(result.imported, 1)
+    assert.equal(services.store.getChunk('chunk_legacy1')?.title, '对比度底线')
+    const found = services.search({ query: '对比度 可读性', topK: 3 })
+    assert.ok(found.hits.some((hit) => hit.chunk_id === 'chunk_legacy1'))
+  } finally { services.close(); cleanup(root) }
+})

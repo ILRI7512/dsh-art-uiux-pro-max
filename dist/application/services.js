@@ -2,8 +2,9 @@
  * 应用服务：CLI、13 个原生 DSH 工具与 MCP 适配层共用同一份业务逻辑。
  * 任何“未验证”结论都在返回值里带 warnings，不靠调用方自觉。
  */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { DatabaseSync } from 'node:sqlite';
 import { ArtError, ERROR_CODES, NotFoundError, ValidationError, asError } from "../core/errors.js";
 import { sha1Hex, shortId } from "../core/ids.js";
 import { DEFAULTS, effectiveDataDir, readSettings, writeSettings } from "../core/settings.js";
@@ -328,15 +329,19 @@ export class ArtServices {
             throw new ValidationError("rerank 必须是 rules 或 ce");
         if (input.minLevel !== undefined && !['L1', 'L2', 'L3', 'L4'].includes(input.minLevel))
             throw new ValidationError('min_level 必须是 L1/L2/L3/L4');
-        const categories = input.categories && input.categories.length > 0 ? input.categories : routeTask(input.query).categories;
-        return retrieve(this.store, input.query, {
-            categories,
+        const explicit = input.categories && input.categories.length > 0;
+        const routed = routeTask(input.query).categories;
+        // 未显式指定分类时不做硬过滤：路由分类只作为展示提示，召回交给混合检索 +
+        // 分类亲和度重排，避免“对比度”这类跨分类问题被 web_page 路由挡掉。
+        const result = retrieve(this.store, input.query, {
+            categories: explicit ? input.categories : [],
             topK: Math.max(1, Math.min(50, Number(input.topK ?? 6))),
             minLevel: input.minLevel,
             rerank: input.rerank ?? this.settingsValue.rerank,
             bilingual: input.bilingual ?? true,
             platform: input.platform,
         });
+        return { ...result, categories: explicit ? [...input.categories] : routed };
     }
     directions(input = {}) {
         const count = Math.max(1, Math.min(4, Number(input.count ?? 3)));
@@ -536,6 +541,79 @@ export class ArtServices {
                 metadata: { component_knowledge: knowledge },
             }]);
         return { knowledge, warnings: ['只读源码：没有构建、没有运行测试、没有渲染截图'] };
+    }
+    // ---------------------------------------------------------------- 迁移
+    /** 从旧 Python 引擎的 metadata.sqlite3 导入 chunks；保留 chunk_id 与 content_hash。 */
+    importLegacy(sourcePath, options = {}) {
+        if (!existsSync(sourcePath))
+            throw new NotFoundError(`旧知识库不存在: ${sourcePath}`);
+        const db = new DatabaseSync(sourcePath, { readOnly: true });
+        try {
+            const columns = db.prepare('PRAGMA table_info(chunks)').all().map((row) => row.name);
+            if (columns.length === 0)
+                throw new ValidationError('旧库没有 chunks 表');
+            const projectId = options.projectId ?? 'prj_art_uiux';
+            const limit = options.limit && options.limit > 0 ? ` LIMIT ${Math.trunc(options.limit)}` : '';
+            const rows = db.prepare(`SELECT * FROM chunks WHERE project_id=?${limit}`).all(projectId);
+            const chunks = [];
+            let skipped = 0;
+            for (const row of rows) {
+                const topic = String(row.topic ?? '');
+                if (!topic) {
+                    skipped += 1;
+                    continue;
+                }
+                let metadata = {};
+                try {
+                    metadata = JSON.parse(String(row.metadata ?? '{}'));
+                }
+                catch {
+                    metadata = {};
+                }
+                chunks.push({
+                    chunk_id: String(row.chunk_id),
+                    project_id: projectId,
+                    document_id: String(row.document_id ?? ''),
+                    partition: String(row.partition ?? 'pending_knowledge'),
+                    domain: String(row.domain ?? 'uiux'),
+                    topic,
+                    subtopic: String(row.subtopic ?? ''),
+                    title: String(row.title ?? ''),
+                    content: String(row.content ?? ''),
+                    summary: String(row.summary ?? ''),
+                    knowledge_type: String(row.knowledge_type ?? 'best_practice'),
+                    level: String(row.level ?? 'L1'),
+                    source_id: String(row.source_id ?? ''),
+                    source_url: String(row.source_url ?? ''),
+                    source_title: String(row.source_title ?? ''),
+                    source_type: String(row.source_type ?? ''),
+                    author_or_publisher: String(row.author_or_publisher ?? ''),
+                    accessed_at: String(row.accessed_at ?? ''),
+                    language: String(row.language ?? 'en'),
+                    content_hash: String(row.content_hash ?? ''),
+                    source_quality: Number(row.source_quality ?? 0.5),
+                    confidence: Number(row.confidence ?? 0.35),
+                    confidence_basis: String(row.confidence_basis ?? ''),
+                    verification_status: String(row.verification_status ?? 'unverified'),
+                    freshness_status: String(row.freshness_status ?? 'unknown'),
+                    license_status: String(row.license_status ?? 'unknown'),
+                    visibility: String(row.visibility ?? 'project'),
+                    metadata,
+                });
+            }
+            const result = this.store.addChunks(chunks);
+            return {
+                source: sourcePath,
+                found: rows.length,
+                imported: result.added + result.updated,
+                duplicates: result.duplicates.length,
+                skipped,
+                stats: this.store.stats(),
+            };
+        }
+        finally {
+            db.close();
+        }
     }
     // ---------------------------------------------------------------- 评测
     evaluate(options = {}) {

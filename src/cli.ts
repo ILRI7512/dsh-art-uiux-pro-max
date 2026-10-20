@@ -64,10 +64,20 @@ async function main(): Promise<void> {
   component-source --repo KEY --file PATH [--name NAME]
   stats [--json]
   eval [--json]
+  import-legacy [--from PATH]  从旧 Python 引擎导入 chunks
   mcp                          stdio MCP 兼容层
 
 数据目录: ${services.dataDir}
 `)
+      return
+    }
+    if (command === 'import-legacy') {
+      const { values } = parseArgs({ args: rest, options: { from: { type: 'string' }, limit: { type: 'string' }, project: { type: 'string' }, json: { type: 'boolean' } }, allowPositionals: true })
+      const source = value(values, 'from') ?? join(root, 'dsh_autonomous_learning', 'data', 'metadata.sqlite3')
+      const result = services.importLegacy(source, { projectId: value(values, 'project'), limit: numberValue(values, 'limit') })
+      if (bool(values, 'json')) { printJson(result); return }
+      process.stdout.write(`旧库: ${source}\n发现 ${result.found} 条，导入 ${result.imported} 条，重复 ${result.duplicates}，跳过 ${result.skipped}\n`)
+      process.stdout.write(`新库统计: ${JSON.stringify((result.stats as Record<string, unknown>).chunks)} 条\n`)
       return
     }
     if (command === 'mcp') {
