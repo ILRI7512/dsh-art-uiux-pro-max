@@ -11,3 +11,6 @@ __pycache__/
 *.bak
 # 系统垃圾
 .DS_Store
+# 渲染截图（可由 scripts/render_check.py 重新生成，避免仓库塞二进制）
+docs/practice/shots/*.png
+docs/practice/shots/*.pdf
