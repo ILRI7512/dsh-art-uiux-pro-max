@@ -96,6 +96,29 @@ dsh plugin --profile web add link:/path/to/dsh-art-uiux-pro-max
 
 设置卡（设置 → 插件 → Art UI/UX）可改数据目录、网络开关、私网开关、单次学习上限与重排策略。
 
+## 故障与修复记录
+
+### 2026-10-20 · Desktop profile 无法进入（客户端 bundle 带了 `export {}`）
+
+**现象**：桌面端切到 `desktop` profile 直接进不去，主进程日志 `runtime.failed`，渲染进程报
+`Uncaught SyntaxError: Unexpected token 'export'` 和
+`web boot: 1 entry did not activate / @local/art-uiux: import failed`。
+
+**根因**：DSH 的 client bundle 必须是**经典脚本**——被 `<script>` 执行时只调用
+`window.__ModuleLoader__.load({ id, factory })`。本仓库 `tsconfig` 是 `module: NodeNext`、
+`package.json` 是 `type: module`，TypeScript 会给「没有 import/export 的 `.ts`」末尾补 `export {};`
+以保持模块身份；`src/client/index.ts` 恰好是这种形态，于是产物在浏览器里直接语法错误，
+该 entry 导入失败，整个 web boot 判定失败。
+
+**修复**：构建后由 `scripts/finalize-client-bundle.mjs` 剥离该行，并断言「无 ESM 语法 + 已注册
+`__ModuleLoader__`」，已内置进 `npm run build`；`tests/unit/client-bundle.test.ts` 锁住产物形态。
+同一次修复把 `ctx.webServer` 改成子注入上下文 `ctx.inject(['webServer'], …)`——Cordis 对未 inject
+的服务取值会抛 `cannot get property "webServer" without inject`，之前用 try/catch 吞掉，
+代价是设置卡路由从未注册（卡片打开 404）。
+
+**自检**：`node scripts/check-client-bundles.mjs ~/.dsh/profiles/desktop`（本机结果：13 个 bundle，0 broken）。
+完整分析（证据、根因链、验证数据）见 [docs/FIX-2026-10-20-desktop-profile-web-boot.md](docs/FIX-2026-10-20-desktop-profile-web-boot.md)。
+
 ## 16 个原生工具
 
 | 工具 | 作用 |
