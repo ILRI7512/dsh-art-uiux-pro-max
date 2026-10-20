@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="自主学习">
+  <defs>
+    <linearGradient id="book" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a7cf0"/>
+      <stop offset="1" stop-color="#22408f"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 12c6-2 12-2 18 1v40c-6-3-12-3-18-1V12Z" fill="url(#book)"/>
+  <path d="M56 12c-6-2-12-2-18 1v40c6-3 12-3 18-1V12Z" fill="#2f57b8"/>
+  <path d="M32 13v40" stroke="#dbe6ff" stroke-width="2" opacity="0.9"/>
+  <path d="M14 22c3-1 6-1 9 0M14 29c3-1 6-1 9 0M14 36c3-1 6-1 9 0" stroke="#dbe6ff" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="46" cy="42" r="9" fill="none" stroke="#ffd166" stroke-width="3"/>
+  <path d="M52.5 48.5 58 54" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/>
+</svg>

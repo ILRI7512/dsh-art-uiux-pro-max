@@ -1,0 +1,387 @@
+{
+  "generated_at": "2026-10-20T02:13:39Z",
+  "direction": "industrial_dense",
+  "tasks": [
+    {
+      "task": "使用基础组件构建登录页",
+      "page": "login.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "6/6",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "2/2 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "2/2 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "使用导航组件构建完整首页",
+      "page": "home.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "6/6",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "0/0 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "0/0 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "使用卡片与表格构建金融仪表盘",
+      "page": "dashboard.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "7/7",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "0/0 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "0/0 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "表格有 caption 与表头 scope",
+          "pass": true,
+          "detail": "caption=True, scope=True"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "使用表单组件构建设置页面",
+      "page": "settings.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "6/6",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "1/1 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "1/1 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "使用弹窗和提示组件实现完整交互",
+      "page": "dialog.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "6/6",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "0/0 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "3/3 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "对同一组件实现两种不同视觉风格",
+      "page": "dual_style.html",
+      "audit_counts": {
+        "unmeasured": 1,
+        "pass": 7,
+        "warn": 2
+      },
+      "measured_items": 9,
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "contracts_passed": "6/6",
+      "contract_details": [
+        {
+          "check": "每个输入都有 label 关联",
+          "pass": true,
+          "detail": "0/0 个 input 有 label"
+        },
+        {
+          "check": "button 显式声明 type",
+          "pass": true,
+          "detail": "2/2 个 button 带 type"
+        },
+        {
+          "check": "存在焦点可见样式",
+          "pass": true,
+          "detail": "检测 :focus-visible 规则"
+        },
+        {
+          "check": "触控目标 ≥44px",
+          "pass": true,
+          "detail": "min-height=44"
+        },
+        {
+          "check": "动态区域有 aria-live",
+          "pass": true,
+          "detail": "aria-live/role detected"
+        },
+        {
+          "check": "支持 prefers-reduced-motion",
+          "pass": true,
+          "detail": "媒体查询在全局样式中"
+        }
+      ]
+    },
+    {
+      "task": "创建统一主题和 Design Tokens",
+      "tokens": {
+        "color": {
+          "bg": "#14171c",
+          "fg": "#e6e9ee",
+          "muted": "#9aa3af",
+          "accent": "#4c9aff",
+          "surface": "#1c2027",
+          "positive": "#4ade80",
+          "negative": "#f87171",
+          "warning": "#fbbf24",
+          "border": "#6b7484"
+        },
+        "type_scale_px": [
+          12,
+          14,
+          16,
+          20,
+          28,
+          40,
+          56
+        ],
+        "space_scale_px": [
+          4,
+          8,
+          12,
+          16,
+          24,
+          32,
+          48,
+          64
+        ],
+        "radius_px": [
+          0,
+          4,
+          8,
+          12,
+          16
+        ],
+        "shadow": [
+          "0 1px 2px rgba(0,0,0,.06)",
+          "0 8px 24px rgba(0,0,0,.10)"
+        ],
+        "motion": {
+          "fast_ms": 120,
+          "base_ms": 180,
+          "easing": "cubic-bezier(.2,.8,.2,1)",
+          "reduced_motion": "支持 prefers-reduced-motion"
+        }
+      },
+      "contrast_pairs": 7,
+      "contrast_failing": 1,
+      "css_written": "tokens.css"
+    },
+    {
+      "task": "在不同屏幕尺寸下检查布局",
+      "responsive": {
+        "pass": 6,
+        "warn": 0,
+        "fail": 0
+      },
+      "signals": {
+        "fixed_widths": [],
+        "max_widths": [
+          420,
+          960
+        ],
+        "media_queries": 6,
+        "tap_targets": [
+          44
+        ],
+        "tap_targets_below_44": [],
+        "fonts_below_12px": []
+      },
+      "measured": false
+    },
+    {
+      "task": "运行可访问性检查",
+      "pages_with_fail": 0,
+      "pages_checked": 6
+    },
+    {
+      "task": "编写组件测试",
+      "test_file": "tests/test_practice_pages.py",
+      "contract_checks": 37,
+      "pages_covered": 6
+    }
+  ]
+}

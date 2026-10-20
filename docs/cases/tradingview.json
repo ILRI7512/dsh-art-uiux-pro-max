@@ -1,0 +1,296 @@
+{
+  "generated_at": "2026-10-20T01:53:08Z",
+  "case": "TradingView 图表平台",
+  "url": "https://www.tradingview.com/",
+  "http_status": 200,
+  "platform": "web",
+  "tech_stack": [
+    "react",
+    "styled-components"
+  ],
+  "sections": {
+    "Layout Analysis": [
+      {
+        "statement": "检出技术栈指纹: react, styled-components",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "HTML 中的静态指纹，非运行时确认"
+      },
+      {
+        "statement": "响应式断点 0 个；容器最大宽度档位: 未检出",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "@media 与 max-width 声明统计"
+      },
+      {
+        "statement": "间距取值高频档位: 12px×4, 4px×1",
+        "kind": "fact",
+        "confidence": 0.75,
+        "basis": "gap/padding/margin 声明统计"
+      },
+      {
+        "statement": "信息重心判断需要真实渲染截图，本工具未做渲染，因此不给结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ],
+    "Color Analysis": [
+      {
+        "statement": "页面出现频次最高的色值: #ffffff×53, #0f0f0f×22, #000000×12, #131722×12, #11132d×4, #fce5cd×4, #ffedc0×4, #b9dbad×4",
+        "kind": "fact",
+        "confidence": 0.9,
+        "basis": "正则统计 HTML/CSS 文本中的十六进制色值"
+      },
+      {
+        "statement": "文本中出现 17 种不同色值（含主题变量与第三方样式）",
+        "kind": "fact",
+        "confidence": 0.7,
+        "basis": "色值计数，含非品牌色"
+      }
+    ],
+    "Component Analysis": [
+      {
+        "statement": "圆角档位: 16px×20",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "border-radius 声明统计"
+      }
+    ],
+    "Interaction Analysis": [
+      {
+        "statement": "未检出 prefers-reduced-motion 适配（可能在其他样式表）",
+        "kind": "inference",
+        "confidence": 0.4,
+        "basis": "仅基于当前抓取的 HTML/CSS"
+      }
+    ],
+    "Accessibility Analysis": [
+      {
+        "statement": "aria 属性 342 个、role 258 个；img 245 张，其中带 alt 221 张（90%）",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "静态标记统计，不等于无障碍达标"
+      },
+      {
+        "statement": "对比度、焦点顺序、屏幕阅读器表现需要真实渲染与工具检测，本工具未测",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      },
+      {
+        "statement": "疑似存在跳转到主内容的 skip link",
+        "kind": "inference",
+        "confidence": 0.5,
+        "basis": "关键字命中"
+      }
+    ],
+    "Visual Language": [
+      {
+        "statement": "整体风格判断（如极简/拟物/高对比）依赖视觉主观判断，需人工或视觉模型复核，本工具不下结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ]
+  },
+  "metrics": {
+    "top_colors": [
+      [
+        "#ffffff",
+        53
+      ],
+      [
+        "#0f0f0f",
+        22
+      ],
+      [
+        "#000000",
+        12
+      ],
+      [
+        "#131722",
+        12
+      ],
+      [
+        "#11132d",
+        4
+      ],
+      [
+        "#fce5cd",
+        4
+      ],
+      [
+        "#ffedc0",
+        4
+      ],
+      [
+        "#b9dbad",
+        4
+      ]
+    ],
+    "media_queries": 0,
+    "max_widths": [],
+    "spacing": [
+      [
+        "12px",
+        4
+      ],
+      [
+        "4px",
+        1
+      ]
+    ],
+    "radius": [
+      [
+        "16px",
+        20
+      ]
+    ],
+    "aria_attrs": 342,
+    "roles": 258,
+    "img_total": 245,
+    "img_with_alt": 221
+  },
+  "ingested_chunks": 10,
+  "duplicates": [
+    {
+      "chunk_id": "chunk_468129a15331f628",
+      "duplicate_of": "chunk_83cb9aaa6543dc94",
+      "reason": "content_hash"
+    },
+    {
+      "chunk_id": "chunk_d1495b51d099a2f8",
+      "duplicate_of": "chunk_ba1bec2d82e9f69e",
+      "reason": "content_hash"
+    }
+  ],
+  "potential_conflicts": [
+    {
+      "key": "web_ui|px",
+      "a_source": "https://mui.com/material-ui/",
+      "a_value": 6.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://mui.com/material-ui/",
+      "a_value": 6.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 1.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 1.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 4.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 2.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 2.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 20.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 20.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 278.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 278.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 8.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 8.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 115.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://finviz.com/",
+      "a_value": 115.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "ui_quality|%",
+      "a_source": "https://finviz.com/",
+      "a_value": 100.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 90.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://www.tradingview.com/",
+      "a_value": 12.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://www.tradingview.com/",
+      "a_value": 4.0,
+      "b_source": "https://www.tradingview.com/",
+      "b_value": 12.0
+    }
+  ]
+}

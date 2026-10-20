@@ -1,0 +1,188 @@
+{
+  "generated_at": "2026-10-20T01:53:15Z",
+  "case": "Interface In Game（游戏 UI 图库）",
+  "url": "https://interfaceingame.com/",
+  "http_status": 200,
+  "platform": "game",
+  "tech_stack": [
+    "wordpress"
+  ],
+  "sections": {
+    "Layout Analysis": [
+      {
+        "statement": "检出技术栈指纹: wordpress",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "HTML 中的静态指纹，非运行时确认"
+      },
+      {
+        "statement": "响应式断点 0 个；容器最大宽度档位: 未检出",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "@media 与 max-width 声明统计"
+      },
+      {
+        "statement": "信息重心判断需要真实渲染截图，本工具未做渲染，因此不给结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ],
+    "Color Analysis": [
+      {
+        "statement": "页面出现频次最高的色值: #fff×3, #32373c×2, #000000×1, #abb8c3×1, #ffffff×1, #f78da7×1, #cf2e2e×1, #ff6900×1",
+        "kind": "fact",
+        "confidence": 0.9,
+        "basis": "正则统计 HTML/CSS 文本中的十六进制色值"
+      },
+      {
+        "statement": "文本中出现 15 种不同色值（含主题变量与第三方样式）",
+        "kind": "fact",
+        "confidence": 0.7,
+        "basis": "色值计数，含非品牌色"
+      }
+    ],
+    "Background Analysis": [
+      {
+        "statement": "渐变出现 12 次、阴影规则 1 条",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "CSS 文本计数"
+      },
+      {
+        "statement": "渐变类型分布: linear-gradient×12",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "CSS 关键字计数"
+      },
+      {
+        "statement": "疑似包含噪点/纹理层（噪声函数或内嵌位图）",
+        "kind": "inference",
+        "confidence": 0.45,
+        "basis": "关键字命中，未做视觉确认"
+      }
+    ],
+    "Typography Analysis": [
+      {
+        "statement": "字号档位: 1.125em×1, 1.5em×1",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "font-size 声明统计"
+      }
+    ],
+    "Component Analysis": [
+      {
+        "statement": "圆角档位: 9999px×1",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "border-radius 声明统计"
+      }
+    ],
+    "Interaction Analysis": [
+      {
+        "statement": "未检出 prefers-reduced-motion 适配（可能在其他样式表）",
+        "kind": "inference",
+        "confidence": 0.4,
+        "basis": "仅基于当前抓取的 HTML/CSS"
+      }
+    ],
+    "Accessibility Analysis": [
+      {
+        "statement": "aria 属性 149 个、role 4 个；img 145 张，其中带 alt 145 张（100%）",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "静态标记统计，不等于无障碍达标"
+      },
+      {
+        "statement": "对比度、焦点顺序、屏幕阅读器表现需要真实渲染与工具检测，本工具未测",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ],
+    "Visual Language": [
+      {
+        "statement": "整体风格判断（如极简/拟物/高对比）依赖视觉主观判断，需人工或视觉模型复核，本工具不下结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ]
+  },
+  "metrics": {
+    "top_colors": [
+      [
+        "#fff",
+        3
+      ],
+      [
+        "#32373c",
+        2
+      ],
+      [
+        "#000000",
+        1
+      ],
+      [
+        "#abb8c3",
+        1
+      ],
+      [
+        "#ffffff",
+        1
+      ],
+      [
+        "#f78da7",
+        1
+      ],
+      [
+        "#cf2e2e",
+        1
+      ],
+      [
+        "#ff6900",
+        1
+      ]
+    ],
+    "font_sizes": [
+      [
+        "1.125em",
+        1
+      ],
+      [
+        "1.5em",
+        1
+      ]
+    ],
+    "media_queries": 0,
+    "max_widths": [],
+    "spacing": [],
+    "radius": [
+      [
+        "9999px",
+        1
+      ]
+    ],
+    "aria_attrs": 149,
+    "roles": 4,
+    "img_total": 145,
+    "img_with_alt": 145
+  },
+  "ingested_chunks": 10,
+  "duplicates": [
+    {
+      "chunk_id": "chunk_7fd9390ab401dc99",
+      "duplicate_of": "chunk_74e1bcb111ad4652",
+      "reason": "content_hash"
+    }
+  ],
+  "potential_conflicts": [
+    {
+      "key": "design_system|px",
+      "a_source": "https://www.tradingview.com/",
+      "a_value": 16.0,
+      "b_source": "https://interfaceingame.com/",
+      "b_value": 9999.0
+    }
+  ]
+}

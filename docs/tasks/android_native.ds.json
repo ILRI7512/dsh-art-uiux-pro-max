@@ -1,0 +1,183 @@
+{
+  "task": "用 Compose 写一个 Android 首页",
+  "task_type": "android_native",
+  "direction": {
+    "name": "Editorial Light（编辑部留白）",
+    "idea": "以阅读节奏为第一优先级，靠留白与字号对比建立秩序",
+    "style": "纸感浅底、低饱和、强排版层级",
+    "color": "暖白底 + 近黑字 + 单一强调色（饱和度中等）",
+    "type": "衬线大标题 + 无衬线正文，字号跨度 3 档以上",
+    "layout": "单栏窄容器，长段落，弱化卡片边界",
+    "background": "纯色或极轻纸纹，无渐变",
+    "interaction": "轻微淡入与下划线反馈，时长 120–180ms",
+    "fits": "内容型站点、品牌官网、长文阅读",
+    "drawbacks": "信息密度低，不适合高频操作台",
+    "key": "editorial_light",
+    "excluded_defaults_checked": [
+      "玻璃拟态",
+      "深色背景",
+      "蓝紫渐变",
+      "发光边框"
+    ]
+  },
+  "design_system": {
+    "direction": "editorial_light",
+    "tokens": {
+      "color": {
+        "bg": "#faf8f4",
+        "fg": "#15130f",
+        "muted": "#6b6459",
+        "accent": "#8a4b2a",
+        "surface": "#ffffff",
+        "positive": "#1c6b3a",
+        "negative": "#a32118",
+        "warning": "#8a5a00"
+      },
+      "type_scale_px": [
+        12,
+        14,
+        16,
+        20,
+        28,
+        40,
+        56
+      ],
+      "space_scale_px": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "radius_px": [
+        0,
+        4,
+        8,
+        12,
+        16
+      ],
+      "shadow": [
+        "0 1px 2px rgba(0,0,0,.06)",
+        "0 8px 24px rgba(0,0,0,.10)"
+      ],
+      "motion": {
+        "fast_ms": 120,
+        "base_ms": 180,
+        "easing": "cubic-bezier(.2,.8,.2,1)",
+        "reduced_motion": "支持 prefers-reduced-motion"
+      }
+    },
+    "component_states": [
+      "default",
+      "hover",
+      "active",
+      "focus-visible",
+      "disabled",
+      "loading",
+      "error"
+    ],
+    "responsive": [
+      "compact <600",
+      "medium 600–1023",
+      "expanded ≥1024"
+    ],
+    "a11y": [
+      "焦点可见（≥3:1 轮廓对比）",
+      "触控目标 ≥44×44",
+      "不依赖颜色单独传达状态"
+    ],
+    "contrast": [
+      {
+        "pair": "正文/背景",
+        "fg": "#15130f",
+        "bg": "#faf8f4",
+        "ratio": 17.49,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "次要文字/背景",
+        "fg": "#6b6459",
+        "bg": "#faf8f4",
+        "ratio": 5.51,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "强调色/背景",
+        "fg": "#8a4b2a",
+        "bg": "#faf8f4",
+        "ratio": 6.34,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "正文/卡片面",
+        "fg": "#15130f",
+        "bg": "#ffffff",
+        "ratio": 18.55,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "涨/正向",
+        "fg": "#1c6b3a",
+        "bg": "#faf8f4",
+        "ratio": 6.16,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "跌/负向",
+        "fg": "#a32118",
+        "bg": "#faf8f4",
+        "ratio": 7.1,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      }
+    ],
+    "failing_pairs": [],
+    "verified": false,
+    "note": "对比度为公式实算；其余项为设计约定，尚未经真实任务验证"
+  },
+  "audit": {
+    "items": [],
+    "counts": {
+      "unmeasured": 10
+    },
+    "measured_items": 0,
+    "note": "Android 代码未经真实构建与渲染，审计项全部 unmeasured"
+  },
+  "feedback": {
+    "title": "方向 Editorial Light（编辑部留白） 的 token 基线",
+    "content": "方向 Editorial Light（编辑部留白） 的 token 基线｜对比度实算见报告；尚未经过真实用户或生产验证",
+    "category": "android_ui",
+    "scope": "project",
+    "partition": "project_knowledge",
+    "level": "L2",
+    "verified": false,
+    "source_url": "",
+    "content_hash": "a2e4302c86e821675b04588ddb9a880608b5163de1490b4aa86850e024bfcc6f"
+  }
+}

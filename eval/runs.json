@@ -1,0 +1,2632 @@
+{
+  "aggregate": {
+    "vector": {
+      "P@1": 0.3888888888888889,
+      "P@3": 0.24074074074074073,
+      "P@5": 0.2,
+      "R@10": 0.6822916666666666,
+      "MRR@10": 0.46219135802469136,
+      "nDCG@5": 0.49254563147547864,
+      "cat_purity@5": 0.25555555555555554
+    },
+    "bm25": {
+      "P@1": 0.2777777777777778,
+      "P@3": 0.17592592592592593,
+      "P@5": 0.17222222222222222,
+      "R@10": 0.5208333333333334,
+      "MRR@10": 0.30092592592592593,
+      "nDCG@5": 0.33208225537546693,
+      "cat_purity@5": 0.2888888888888889
+    },
+    "rrf": {
+      "P@1": 0.3888888888888889,
+      "P@3": 0.24074074074074073,
+      "P@5": 0.2,
+      "R@10": 0.7239583333333334,
+      "MRR@10": 0.4078703703703704,
+      "nDCG@5": 0.45075381763749756,
+      "cat_purity@5": 0.34444444444444444
+    },
+    "rerank": {
+      "P@1": 0.5555555555555556,
+      "P@3": 0.3888888888888889,
+      "P@5": 0.2777777777777778,
+      "R@10": 0.796875,
+      "MRR@10": 0.5462962962962963,
+      "nDCG@5": 0.6193992821514278,
+      "cat_purity@5": 0.4555555555555555
+    },
+    "rerank_zh": {
+      "P@1": 0.5555555555555556,
+      "P@3": 0.4259259259259259,
+      "P@5": 0.2888888888888889,
+      "R@10": 0.9010416666666666,
+      "MRR@10": 0.5972222222222222,
+      "nDCG@5": 0.6896312686453153,
+      "cat_purity@5": 0.5555555555555556
+    },
+    "rerank_ce": {
+      "P@1": 0.6666666666666666,
+      "P@3": 0.4629629629629629,
+      "P@5": 0.3111111111111111,
+      "R@10": 0.9010416666666666,
+      "MRR@10": 0.6944444444444444,
+      "nDCG@5": 0.7800236429715312,
+      "cat_purity@5": 0.5222222222222223
+    }
+  },
+  "deltas_rerank_vs_rrf": {
+    "nDCG@5": {
+      "mean_diff": 0.32926982533403365,
+      "lo": 0.16905502123774668,
+      "hi": 0.4933753257274917,
+      "n": 16
+    },
+    "MRR@10": {
+      "mean_diff": 0.2865740740740741,
+      "lo": 0.10416666666666667,
+      "hi": 0.46759259259259256,
+      "n": 18
+    },
+    "P@1": {
+      "mean_diff": 0.2777777777777778,
+      "lo": 0.0,
+      "hi": 0.5555555555555556,
+      "n": 18
+    }
+  },
+  "per_topic_ndcg5": {
+    "color_system": {
+      "vector": 0.09364787839833931,
+      "bm25": 0.0,
+      "rrf": 0.0,
+      "rerank": 0.5158474921363962,
+      "rerank_zh": 0.878961873034099,
+      "rerank_ce": 0.878961873034099
+    },
+    "background_design": {
+      "vector": 0.8772153153380493,
+      "bm25": 0.0,
+      "rrf": 0.3065735963827292,
+      "rerank": 0.5706417189553201,
+      "rerank_zh": 1.0,
+      "rerank_ce": 1.0
+    },
+    "design_system": {
+      "vector": 0.33384971663454577,
+      "bm25": 0.1302941176136773,
+      "rrf": 0.4724544332381709,
+      "rerank": 0.5893747541150691,
+      "rerank_zh": 0.5194918389240887,
+      "rerank_ce": 0.5034211683081756
+    },
+    "android_ui": {
+      "vector": 0.8344475896326595,
+      "bm25": 0.5364180057596336,
+      "rrf": 0.649014791936513,
+      "rerank": 0.6361599521541359,
+      "rerank_zh": 0.8344475896326595,
+      "rerank_ce": 0.8344475896326595
+    },
+    "web_ui": {
+      "vector": 1.0,
+      "bm25": 0.0,
+      "rrf": 0.4306765580733931,
+      "rerank": 1.0,
+      "rerank_zh": 1.0,
+      "rerank_ce": 1.0
+    },
+    "uiux_principles": {
+      "vector": 0.5,
+      "bm25": 0.0,
+      "rrf": 0.5,
+      "rerank": 0.25,
+      "rerank_zh": 0.46533827903669656,
+      "rerank_ce": 0.8154648767857287
+    },
+    "financial_dashboard": {
+      "vector": 0.7170533846952881,
+      "bm25": 0.6132981458501705,
+      "rrf": 0.8871368074784927,
+      "rerank": 0.6437768397138071,
+      "rerank_zh": 0.5364661476906097,
+      "rerank_ce": 0.8331277807946136
+    },
+    "game_ui": {
+      "vector": 0.41311732856427996,
+      "bm25": 0.639909328045346,
+      "rrf": 0.52129602861432,
+      "rerank": 0.8262346571285599,
+      "rerank_zh": 0.8262346571285599,
+      "rerank_ce": 0.944847956559586
+    },
+    "visual_assets": {
+      "vector": 0.0,
+      "bm25": 0.3065735963827292,
+      "rrf": 0.0,
+      "rerank": 0.5706417189553201,
+      "rerank_zh": 0.6934264036172708,
+      "rerank_ce": 0.6934264036172708
+    },
+    "ui_quality": {
+      "vector": 0.4859248642688512,
+      "bm25": 0.70655866428214,
+      "rrf": 0.5,
+      "rerank": 0.7197404682585248,
+      "rerank_zh": 0.6938528880940467,
+      "rerank_ce": 0.7885933563525714
+    }
+  },
+  "per_query": [
+    {
+      "qid": "q01",
+      "query": "正文最小对比度是多少，大字号和徽标有没有例外",
+      "expected_topic": "color_system",
+      "labels": {
+        "chunk_37cc807665c690f4": 2,
+        "chunk_5cdf913ee2ae736e": 1,
+        "chunk_84b10def6d65384b": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_35bd6d15b3949cab",
+          "chunk_f9f68f6b7dd69610",
+          "chunk_render_0",
+          "chunk_c6989e12aed913ab",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_practice_56b1bb950751",
+          "chunk_84b10def6d65384b",
+          "chunk_render_1",
+          "chunk_37cc807665c690f4",
+          "chunk_abbaf9b3e620d388"
+        ],
+        "bm25": [
+          "chunk_render_0",
+          "chunk_c49766f39810c473"
+        ],
+        "rrf": [
+          "chunk_render_0",
+          "chunk_c49766f39810c473",
+          "chunk_35bd6d15b3949cab",
+          "chunk_f9f68f6b7dd69610",
+          "chunk_c6989e12aed913ab",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_practice_56b1bb950751",
+          "chunk_84b10def6d65384b",
+          "chunk_render_1",
+          "chunk_37cc807665c690f4"
+        ],
+        "rerank": [
+          "chunk_render_0",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_37cc807665c690f4",
+          "chunk_c49766f39810c473",
+          "chunk_82cca18b5c638462",
+          "chunk_5bd45e34170c0176",
+          "chunk_12aa667dd0ce111d",
+          "chunk_35bd6d15b3949cab",
+          "chunk_practice_56b1bb950751",
+          "chunk_f9f68f6b7dd69610"
+        ],
+        "rerank_zh": [
+          "chunk_37cc807665c690f4",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_75144f43f93dcdd8",
+          "chunk_671110a47c5d6746",
+          "chunk_7b2ca992be5ee35f",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_render_0",
+          "chunk_35bd6d15b3949cab",
+          "chunk_84b10def6d65384b",
+          "chunk_c6989e12aed913ab"
+        ],
+        "rerank_ce": [
+          "chunk_37cc807665c690f4",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_75144f43f93dcdd8",
+          "chunk_c6989e12aed913ab",
+          "chunk_35bd6d15b3949cab",
+          "chunk_7b2ca992be5ee35f",
+          "chunk_render_0",
+          "chunk_84b10def6d65384b",
+          "chunk_671110a47c5d6746",
+          "chunk_03a77fdc6a24f5ac"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.1111111111111111,
+          "nDCG@5": 0.09364787839833931,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 1.0,
+          "MRR@10": 0.1,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5158474921363962,
+          "cat_purity@5": 0.6
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.878961873034099,
+          "cat_purity@5": 0.8
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.878961873034099,
+          "cat_purity@5": 0.6
+        }
+      },
+      "latency_ms_total": 9986.4,
+      "latency_ms_ce": 8656.9
+    },
+    {
+      "qid": "q02",
+      "query": "渐变是怎么构成的，线性渐变有哪些控制点",
+      "expected_topic": "background_design",
+      "labels": {
+        "chunk_46cc87a357d4aaa5": 2,
+        "chunk_5ec07804e016b9ca": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_5ec07804e016b9ca",
+          "chunk_ab71f4a4b57f650b",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_46cc87a357d4aaa5",
+          "chunk_17f6e1caedb63484",
+          "chunk_b7722307627714ee",
+          "chunk_render_1",
+          "chunk_ddfe745204186310",
+          "chunk_5e5b2b7feb42f238",
+          "chunk_a104767fe6bc4576"
+        ],
+        "bm25": [
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_70a26970d1e78d26",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_ddc0c34b6f3fc15c"
+        ],
+        "rrf": [
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_5ec07804e016b9ca",
+          "chunk_ab71f4a4b57f650b",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_46cc87a357d4aaa5",
+          "chunk_17f6e1caedb63484",
+          "chunk_b7722307627714ee",
+          "chunk_render_1",
+          "chunk_ddfe745204186310"
+        ],
+        "rerank": [
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_5ec07804e016b9ca",
+          "chunk_46cc87a357d4aaa5",
+          "chunk_9820b60104571fc1",
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_ab71f4a4b57f650b",
+          "chunk_render_1",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_17f6e1caedb63484"
+        ],
+        "rerank_zh": [
+          "chunk_5ec07804e016b9ca",
+          "chunk_46cc87a357d4aaa5",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_d8f4e683deb20393",
+          "chunk_9820b60104571fc1",
+          "chunk_1c7c98a164e35915",
+          "chunk_ab71f4a4b57f650b",
+          "chunk_render_1",
+          "chunk_03a77fdc6a24f5ac"
+        ],
+        "rerank_ce": [
+          "chunk_5ec07804e016b9ca",
+          "chunk_46cc87a357d4aaa5",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_ab71f4a4b57f650b",
+          "chunk_d8f4e683deb20393",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_9820b60104571fc1",
+          "chunk_44a26285f2a645b7",
+          "chunk_17f6e1caedb63484",
+          "chunk_8bb9c0e8f9f3e8d8"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8772153153380493,
+          "cat_purity@5": 0.4
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.4
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.3065735963827292,
+          "cat_purity@5": 0.6
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5706417189553201,
+          "cat_purity@5": 1.0
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.8
+        }
+      },
+      "latency_ms_total": 2838.8,
+      "latency_ms_ce": 2119.2
+    },
+    {
+      "qid": "q03",
+      "query": "design token 在主题里怎么落地和复用",
+      "expected_topic": "design_system",
+      "labels": {
+        "chunk_f618c61e72541a2f": 2,
+        "chunk_fb04873715fcf01b": 2,
+        "chunk_0d4a04cab4cfb23f": 1,
+        "chunk_61dd43b0a6925964": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_f618c61e72541a2f",
+          "chunk_3f60928d9944a2a6",
+          "chunk_61dd43b0a6925964",
+          "chunk_848bd772442f2bfb",
+          "chunk_558dbd57002e1681",
+          "chunk_740797006e6672a9",
+          "chunk_e18c4f5a91c44b73",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_comp_9f965b73f92aeec3"
+        ],
+        "bm25": [
+          "chunk_5bd45e34170c0176",
+          "chunk_71b1642f8ab1931a",
+          "chunk_c8e2c035c6b41922",
+          "chunk_848bd772442f2bfb",
+          "chunk_3624268530272334",
+          "chunk_f618c61e72541a2f",
+          "chunk_f9f68f6b7dd69610",
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_6af874232515276f",
+          "chunk_3f60928d9944a2a6"
+        ],
+        "rrf": [
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_f618c61e72541a2f",
+          "chunk_848bd772442f2bfb",
+          "chunk_3f60928d9944a2a6",
+          "chunk_61dd43b0a6925964",
+          "chunk_558dbd57002e1681",
+          "chunk_740797006e6672a9",
+          "chunk_3624268530272334",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_fb04873715fcf01b"
+        ],
+        "rerank": [
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_f618c61e72541a2f",
+          "chunk_848bd772442f2bfb",
+          "chunk_3f60928d9944a2a6",
+          "chunk_61dd43b0a6925964",
+          "chunk_558dbd57002e1681",
+          "chunk_740797006e6672a9",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_3624268530272334",
+          "chunk_fb04873715fcf01b"
+        ],
+        "rerank_zh": [
+          "chunk_3f60928d9944a2a6",
+          "chunk_fb04873715fcf01b",
+          "chunk_848bd772442f2bfb",
+          "chunk_740797006e6672a9",
+          "chunk_7ec575428f88b94b",
+          "chunk_f618c61e72541a2f",
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_61dd43b0a6925964",
+          "chunk_558dbd57002e1681",
+          "chunk_comp_9f965b73f92aeec3"
+        ],
+        "rerank_ce": [
+          "chunk_3f60928d9944a2a6",
+          "chunk_fb04873715fcf01b",
+          "chunk_0d4a04cab4cfb23f",
+          "chunk_740797006e6672a9",
+          "chunk_848bd772442f2bfb",
+          "chunk_f618c61e72541a2f",
+          "chunk_61dd43b0a6925964",
+          "chunk_7ec575428f88b94b",
+          "chunk_558dbd57002e1681",
+          "chunk_7c47ab52aab517a6"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 0.75,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.5707023827744542,
+          "cat_purity@5": 1.0
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.5,
+          "MRR@10": 0.16666666666666666,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.4
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.5631770100492522,
+          "cat_purity@5": 1.0
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.5631770100492522,
+          "cat_purity@5": 1.0
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.325027967813913,
+          "cat_purity@5": 1.0
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.4108874912590222,
+          "cat_purity@5": 1.0
+        }
+      },
+      "latency_ms_total": 3121.4,
+      "latency_ms_ce": 2429.7
+    },
+    {
+      "qid": "q04",
+      "query": "平板和折叠屏上 Compose 怎么做自适应布局",
+      "expected_topic": "android_ui",
+      "labels": {
+        "chunk_bc4ae5d358998d3c": 2,
+        "chunk_e33c7821c545a59a": 2,
+        "chunk_848bd772442f2bfb": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_bc4ae5d358998d3c",
+          "chunk_0bf673607c98406d",
+          "chunk_e33c7821c545a59a",
+          "chunk_558dbd57002e1681",
+          "chunk_practice_56b1bb950751",
+          "chunk_7fd9390ab401dc99",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_3f60928d9944a2a6",
+          "chunk_848bd772442f2bfb",
+          "chunk_9eace257f6d2df5d"
+        ],
+        "bm25": [
+          "chunk_848bd772442f2bfb",
+          "chunk_bc4ae5d358998d3c",
+          "chunk_5fefe98579cb1fad",
+          "chunk_3624268530272334",
+          "chunk_558dbd57002e1681",
+          "chunk_45cb7746385069a1",
+          "chunk_ee58e48cc904eea4",
+          "chunk_81ab8f1fa45c4d88",
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_740797006e6672a9"
+        ],
+        "rrf": [
+          "chunk_bc4ae5d358998d3c",
+          "chunk_558dbd57002e1681",
+          "chunk_848bd772442f2bfb",
+          "chunk_740797006e6672a9",
+          "chunk_81ab8f1fa45c4d88",
+          "chunk_5fefe98579cb1fad",
+          "chunk_3624268530272334",
+          "chunk_0bf673607c98406d",
+          "chunk_e33c7821c545a59a",
+          "chunk_practice_56b1bb950751"
+        ],
+        "rerank": [
+          "chunk_bc4ae5d358998d3c",
+          "chunk_81ab8f1fa45c4d88",
+          "chunk_558dbd57002e1681",
+          "chunk_848bd772442f2bfb",
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_740797006e6672a9",
+          "chunk_5fefe98579cb1fad",
+          "chunk_3624268530272334",
+          "chunk_9eace257f6d2df5d",
+          "chunk_ee58e48cc904eea4"
+        ],
+        "rerank_zh": [
+          "chunk_bc4ae5d358998d3c",
+          "chunk_81ab8f1fa45c4d88",
+          "chunk_e33c7821c545a59a",
+          "chunk_4d49a69b4f1c28ad",
+          "chunk_558dbd57002e1681",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_0bf673607c98406d",
+          "chunk_7fd9390ab401dc99",
+          "chunk_74e1bcb111ad4652",
+          "chunk_468129a15331f628"
+        ],
+        "rerank_ce": [
+          "chunk_bc4ae5d358998d3c",
+          "chunk_81ab8f1fa45c4d88",
+          "chunk_e33c7821c545a59a",
+          "chunk_4d49a69b4f1c28ad",
+          "chunk_0a653beae0ab786d",
+          "chunk_558dbd57002e1681",
+          "chunk_0bf673607c98406d",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_7fd9390ab401dc99",
+          "chunk_74e1bcb111ad4652"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8344475896326595,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.5364180057596336,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.649014791936513,
+          "cat_purity@5": 0.4
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.6361599521541359,
+          "cat_purity@5": 0.6
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8344475896326595,
+          "cat_purity@5": 0.6
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8344475896326595,
+          "cat_purity@5": 0.8
+        }
+      },
+      "latency_ms_total": 3239.0,
+      "latency_ms_ce": 2496.1
+    },
+    {
+      "qid": "q05",
+      "query": "用 CSS 工具类快速改样式的方法",
+      "expected_topic": "web_ui",
+      "labels": {
+        "chunk_e18c4f5a91c44b73": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_e18c4f5a91c44b73",
+          "chunk_3858a5b718700074",
+          "chunk_17f6e1caedb63484",
+          "chunk_ac33539c76b87c1d",
+          "chunk_8909d7981fe52fdc",
+          "chunk_97dc181f2d6c696a",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_e2fd8f47b87730e5",
+          "chunk_7e18b121d0727eb7"
+        ],
+        "bm25": [
+          "cmp_7a22a746f905",
+          "cmp_0e648e10a3a0",
+          "cmp_43f0c423fb12",
+          "chunk_17f6e1caedb63484",
+          "chunk_8909d7981fe52fdc",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_c6989e12aed913ab",
+          "chunk_d1495b51d099a2f8",
+          "chunk_ba1bec2d82e9f69e",
+          "chunk_3858a5b718700074"
+        ],
+        "rrf": [
+          "chunk_17f6e1caedb63484",
+          "chunk_3858a5b718700074",
+          "chunk_8909d7981fe52fdc",
+          "chunk_e18c4f5a91c44b73",
+          "chunk_e2fd8f47b87730e5",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_97dc181f2d6c696a",
+          "chunk_practice_e83249bd3ba7"
+        ],
+        "rerank": [
+          "chunk_e18c4f5a91c44b73",
+          "chunk_e2fd8f47b87730e5",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_97dc181f2d6c696a",
+          "chunk_17f6e1caedb63484",
+          "chunk_3858a5b718700074",
+          "chunk_8909d7981fe52fdc",
+          "chunk_c6989e12aed913ab",
+          "chunk_314de4f2faf70453",
+          "chunk_5ec07804e016b9ca"
+        ],
+        "rerank_zh": [
+          "chunk_e18c4f5a91c44b73",
+          "chunk_e2fd8f47b87730e5",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_97dc181f2d6c696a",
+          "chunk_17f6e1caedb63484",
+          "chunk_3858a5b718700074",
+          "chunk_8909d7981fe52fdc",
+          "chunk_c6989e12aed913ab",
+          "chunk_314de4f2faf70453",
+          "chunk_5ec07804e016b9ca"
+        ],
+        "rerank_ce": [
+          "chunk_e18c4f5a91c44b73",
+          "chunk_97dc181f2d6c696a",
+          "chunk_e2fd8f47b87730e5",
+          "chunk_3858a5b718700074",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_17f6e1caedb63484",
+          "chunk_c6989e12aed913ab",
+          "chunk_8909d7981fe52fdc",
+          "chunk_5ec07804e016b9ca",
+          "chunk_314de4f2faf70453"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.25,
+          "nDCG@5": 0.4306765580733931,
+          "cat_purity@5": 0.4
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.8
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.8
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.8
+        }
+      },
+      "latency_ms_total": 3384.4,
+      "latency_ms_ce": 2362.2
+    },
+    {
+      "qid": "q06",
+      "query": "不要只靠颜色传达信息，应该怎么做",
+      "expected_topic": "uiux_principles",
+      "labels": {
+        "chunk_0b530ea0f3f3181a": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_0b530ea0f3f3181a",
+          "chunk_f7f453335cfe0079",
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_c71c26ed36ce36a3",
+          "chunk_45cb7746385069a1",
+          "chunk_82cca18b5c638462",
+          "chunk_5bd45e34170c0176",
+          "chunk_71b1642f8ab1931a",
+          "chunk_f618c61e72541a2f"
+        ],
+        "bm25": [],
+        "rrf": [
+          "chunk_0b530ea0f3f3181a",
+          "chunk_f7f453335cfe0079",
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_c71c26ed36ce36a3",
+          "chunk_45cb7746385069a1",
+          "chunk_82cca18b5c638462",
+          "chunk_5bd45e34170c0176",
+          "chunk_71b1642f8ab1931a",
+          "chunk_f618c61e72541a2f"
+        ],
+        "rerank": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_0b530ea0f3f3181a",
+          "chunk_82cca18b5c638462",
+          "chunk_f7f453335cfe0079",
+          "chunk_5bd45e34170c0176",
+          "chunk_c71c26ed36ce36a3",
+          "chunk_71b1642f8ab1931a",
+          "chunk_45cb7746385069a1",
+          "chunk_c8e2c035c6b41922"
+        ],
+        "rerank_zh": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_0b530ea0f3f3181a",
+          "chunk_82cca18b5c638462",
+          "chunk_f7f453335cfe0079",
+          "chunk_5bd45e34170c0176",
+          "chunk_c71c26ed36ce36a3",
+          "chunk_71b1642f8ab1931a",
+          "chunk_45cb7746385069a1",
+          "chunk_c8e2c035c6b41922"
+        ],
+        "rerank_ce": [
+          "chunk_0b530ea0f3f3181a",
+          "chunk_f7f453335cfe0079",
+          "chunk_c71c26ed36ce36a3",
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_45cb7746385069a1",
+          "chunk_82cca18b5c638462",
+          "chunk_5bd45e34170c0176",
+          "chunk_71b1642f8ab1931a",
+          "chunk_c8e2c035c6b41922"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.2
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5,
+          "cat_purity@5": 0.2
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5,
+          "cat_purity@5": 0.2
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.2
+        }
+      },
+      "latency_ms_total": 2810.1,
+      "latency_ms_ce": 2057.9
+    },
+    {
+      "qid": "q07",
+      "query": "设计系统里的间距节奏怎么定",
+      "expected_topic": "uiux_principles",
+      "labels": {
+        "chunk_148cde11d3439005": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_3f60928d9944a2a6",
+          "chunk_848bd772442f2bfb",
+          "chunk_a104767fe6bc4576",
+          "chunk_practice_56b1bb950751",
+          "chunk_d014b64a28d7da53",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_c097eb1ef6be704f",
+          "chunk_practice_3cc1d5a427a4"
+        ],
+        "bm25": [
+          "chunk_f3d6f9e6a5061563",
+          "chunk_d014b64a28d7da53"
+        ],
+        "rrf": [
+          "chunk_d014b64a28d7da53",
+          "chunk_3f60928d9944a2a6",
+          "chunk_848bd772442f2bfb",
+          "chunk_a104767fe6bc4576",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_c097eb1ef6be704f",
+          "chunk_practice_3cc1d5a427a4"
+        ],
+        "rerank": [
+          "chunk_d014b64a28d7da53",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_practice_56b1bb950751",
+          "chunk_3f60928d9944a2a6",
+          "chunk_practice_2736fab291f0",
+          "chunk_848bd772442f2bfb",
+          "chunk_practice_863be329d064",
+          "chunk_a104767fe6bc4576",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_practice_3cc1d5a427a4"
+        ],
+        "rerank_zh": [
+          "chunk_3f60928d9944a2a6",
+          "chunk_848bd772442f2bfb",
+          "chunk_558dbd57002e1681",
+          "chunk_148cde11d3439005",
+          "chunk_c097eb1ef6be704f",
+          "chunk_c6989e12aed913ab",
+          "chunk_d014b64a28d7da53",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_a104767fe6bc4576",
+          "chunk_3624268530272334"
+        ],
+        "rerank_ce": [
+          "chunk_3f60928d9944a2a6",
+          "chunk_148cde11d3439005",
+          "chunk_848bd772442f2bfb",
+          "chunk_c6989e12aed913ab",
+          "chunk_d014b64a28d7da53",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_a104767fe6bc4576",
+          "chunk_558dbd57002e1681",
+          "chunk_c097eb1ef6be704f",
+          "chunk_f3d6f9e6a5061563"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.2
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.25,
+          "nDCG@5": 0.4306765580733931,
+          "cat_purity@5": 0.2
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6309297535714574,
+          "cat_purity@5": 0.2
+        }
+      },
+      "latency_ms_total": 2989.9,
+      "latency_ms_ce": 2263.4
+    },
+    {
+      "qid": "q08",
+      "query": "行情筛选器那种高密度表格的布局特点",
+      "expected_topic": "financial_dashboard",
+      "labels": {
+        "chunk_534b29c8bdaf1b39": 2,
+        "chunk_83cb9aaa6543dc94": 2,
+        "chunk_d014b64a28d7da53": 2,
+        "chunk_70a26970d1e78d26": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_d014b64a28d7da53",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_practice_f90453ec712c",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_74e1bcb111ad4652",
+          "chunk_7b2ca992be5ee35f",
+          "chunk_12aa667dd0ce111d",
+          "chunk_82cca18b5c638462",
+          "chunk_render_1",
+          "chunk_83cb9aaa6543dc94"
+        ],
+        "bm25": [
+          "chunk_70a26970d1e78d26",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_ba1bec2d82e9f69e",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_82cca18b5c638462",
+          "chunk_abbaf9b3e620d388",
+          "chunk_d014b64a28d7da53",
+          "chunk_5bd45e34170c0176",
+          "chunk_practice_f90453ec712c",
+          "chunk_render_1"
+        ],
+        "rrf": [
+          "chunk_534b29c8bdaf1b39",
+          "chunk_d014b64a28d7da53",
+          "chunk_practice_f90453ec712c",
+          "chunk_82cca18b5c638462",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_render_1",
+          "chunk_abbaf9b3e620d388",
+          "chunk_70a26970d1e78d26",
+          "chunk_ba1bec2d82e9f69e",
+          "chunk_5bd45e34170c0176"
+        ],
+        "rerank": [
+          "chunk_70a26970d1e78d26",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_d014b64a28d7da53",
+          "chunk_practice_f90453ec712c",
+          "chunk_82cca18b5c638462",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_abbaf9b3e620d388",
+          "chunk_render_1",
+          "chunk_5bd45e34170c0176",
+          "chunk_ba1bec2d82e9f69e"
+        ],
+        "rerank_zh": [
+          "chunk_70a26970d1e78d26",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_d014b64a28d7da53",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_74e1bcb111ad4652",
+          "chunk_d86d17bb5b757727",
+          "chunk_468129a15331f628",
+          "chunk_practice_f90453ec712c"
+        ],
+        "rerank_ce": [
+          "chunk_70a26970d1e78d26",
+          "chunk_d014b64a28d7da53",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_d86d17bb5b757727",
+          "chunk_74e1bcb111ad4652",
+          "chunk_render_1",
+          "chunk_468129a15331f628"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.75,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.7170533846952881,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6132981458501705,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8871368074784927,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 1.0,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6437768397138071,
+          "cat_purity@5": 0.2
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5364661476906097,
+          "cat_purity@5": 0.4
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 1.0,
+          "P@5": 0.8,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.8331277807946136,
+          "cat_purity@5": 0.4
+        }
+      },
+      "latency_ms_total": 3052.5,
+      "latency_ms_ce": 2376.8
+    },
+    {
+      "qid": "q09",
+      "query": "游戏 HUD 的视觉结构怎么组织",
+      "expected_topic": "game_ui",
+      "labels": {
+        "chunk_ddc0c34b6f3fc15c": 2,
+        "chunk_c49766f39810c473": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_44a26285f2a645b7",
+          "chunk_0951d250005df568",
+          "chunk_7fd9390ab401dc99",
+          "chunk_cf9c247a37aba234",
+          "chunk_c8e2c035c6b41922",
+          "chunk_f04837a8f7c322d1",
+          "chunk_comp_7c0f11f3be6ec1c9"
+        ],
+        "bm25": [
+          "chunk_practice_56b1bb950751",
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_c49766f39810c473",
+          "chunk_cf9c247a37aba234",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_7fd9390ab401dc99",
+          "chunk_0951d250005df568",
+          "chunk_f04837a8f7c322d1"
+        ],
+        "rrf": [
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_cf9c247a37aba234",
+          "chunk_0951d250005df568",
+          "chunk_7fd9390ab401dc99",
+          "chunk_c49766f39810c473",
+          "chunk_practice_56b1bb950751",
+          "chunk_c8e2c035c6b41922"
+        ],
+        "rerank": [
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_cf9c247a37aba234",
+          "chunk_7fd9390ab401dc99",
+          "chunk_c49766f39810c473",
+          "chunk_f04837a8f7c322d1",
+          "chunk_c8e2c035c6b41922",
+          "chunk_0951d250005df568"
+        ],
+        "rerank_zh": [
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_44a26285f2a645b7",
+          "chunk_f04837a8f7c322d1",
+          "chunk_c8e2c035c6b41922",
+          "chunk_c49766f39810c473",
+          "chunk_cf9c247a37aba234",
+          "chunk_7fd9390ab401dc99",
+          "chunk_0951d250005df568"
+        ],
+        "rerank_ce": [
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_f04837a8f7c322d1",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_c49766f39810c473",
+          "chunk_practice_56b1bb950751",
+          "chunk_0951d250005df568",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_7fd9390ab401dc99",
+          "chunk_c8e2c035c6b41922",
+          "chunk_44a26285f2a645b7"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.5,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.41311732856427996,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.639909328045346,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.52129602861432,
+          "cat_purity@5": 0.2
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8262346571285599,
+          "cat_purity@5": 0.2
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8262346571285599,
+          "cat_purity@5": 0.2
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.944847956559586,
+          "cat_purity@5": 0.2
+        }
+      },
+      "latency_ms_total": 1773.3,
+      "latency_ms_ce": 1037.9
+    },
+    {
+      "qid": "q10",
+      "query": "图标库的许可协议和描边规范",
+      "expected_topic": "visual_assets",
+      "labels": {
+        "chunk_comp_5a9e5e7ff8f80419": 2,
+        "chunk_comp_7c0f11f3be6ec1c9": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_f90453ec712c",
+          "chunk_35bd6d15b3949cab",
+          "chunk_practice_863be329d064",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_70a26970d1e78d26",
+          "chunk_comp_f61d131f03f902c0"
+        ],
+        "bm25": [
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_comp_11ff691a67d9f882"
+        ],
+        "rrf": [
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_f90453ec712c",
+          "chunk_35bd6d15b3949cab",
+          "chunk_practice_863be329d064"
+        ],
+        "rerank": [
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_5fefe98579cb1fad",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7"
+        ],
+        "rerank_zh": [
+          "chunk_5fefe98579cb1fad",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_e18c4f5a91c44b73",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_0916a45d366b7234",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_9f965b73f92aeec3"
+        ],
+        "rerank_ce": [
+          "chunk_5fefe98579cb1fad",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_e18c4f5a91c44b73",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_0916a45d366b7234",
+          "chunk_practice_56b1bb950751"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.3065735963827292,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5706417189553201,
+          "cat_purity@5": 0.4
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6934264036172708,
+          "cat_purity@5": 0.6
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6934264036172708,
+          "cat_purity@5": 0.6
+        }
+      },
+      "latency_ms_total": 2900.3,
+      "latency_ms_ce": 2204.6
+    },
+    {
+      "qid": "q11",
+      "query": "比较几个组件库的测试覆盖和许可证",
+      "expected_topic": "design_system",
+      "labels": {
+        "chunk_comp_11ff691a67d9f882": 2,
+        "chunk_comp_9f965b73f92aeec3": 2,
+        "chunk_comp_c26cdcbd94c236cf": 2,
+        "chunk_comp_f61d131f03f902c0": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_c69ab8bc443ddf53",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_4f177a8ba3a36b5a",
+          "chunk_d0f2ec1c7522982b"
+        ],
+        "bm25": [
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_comp_11ff691a67d9f882",
+          "cmp_7a22a746f905",
+          "cmp_0e648e10a3a0"
+        ],
+        "rrf": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_f90453ec712c",
+          "chunk_c69ab8bc443ddf53",
+          "chunk_4f177a8ba3a36b5a",
+          "chunk_d0f2ec1c7522982b"
+        ],
+        "rerank": [
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_f90453ec712c",
+          "cmp_7a22a746f905",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_comp_f61d131f03f902c0"
+        ],
+        "rerank_zh": [
+          "chunk_d8968584acacf9e1",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_56f2364984d283ff",
+          "chunk_7e18b121d0727eb7",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_6af874232515276f",
+          "chunk_558dbd57002e1681",
+          "chunk_35bd6d15b3949cab",
+          "chunk_practice_2736fab291f0",
+          "chunk_c69ab8bc443ddf53"
+        ],
+        "rerank_ce": [
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_d8968584acacf9e1",
+          "chunk_7e18b121d0727eb7",
+          "chunk_56f2364984d283ff",
+          "chunk_6af874232515276f",
+          "chunk_558dbd57002e1681",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_c69ab8bc443ddf53",
+          "chunk_d404a981d710616e",
+          "chunk_practice_2736fab291f0"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.25,
+          "MRR@10": 0.125,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.25,
+          "nDCG@5": 0.3191471544989228,
+          "cat_purity@5": 0.4
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 0.25,
+          "MRR@10": 0.2,
+          "nDCG@5": 0.15101961822780524,
+          "cat_purity@5": 0.2
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.75,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.3903800499921017,
+          "cat_purity@5": 0.2
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.25,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.24630238874072996,
+          "cat_purity@5": 1.0
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.25,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.3903800499921017,
+          "cat_purity@5": 1.0
+        }
+      },
+      "latency_ms_total": 2055.3,
+      "latency_ms_ce": 1372.6
+    },
+    {
+      "qid": "q12",
+      "query": "按钮组件的属性定义和加载态怎么实现",
+      "expected_topic": "design_system",
+      "labels": {
+        "cmp_0e648e10a3a0": 2,
+        "cmp_43f0c423fb12": 2,
+        "cmp_7a22a746f905": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_b1a362ee0f77d0fc",
+          "cmp_43f0c423fb12",
+          "chunk_7e18b121d0727eb7",
+          "cmp_7a22a746f905",
+          "chunk_0bf673607c98406d",
+          "cmp_0e648e10a3a0",
+          "chunk_practice_863be329d064",
+          "chunk_ac33539c76b87c1d",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_practice_3cc1d5a427a4"
+        ],
+        "bm25": [
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_abbaf9b3e620d388",
+          "chunk_8ed9969836801c61",
+          "cmp_7a22a746f905",
+          "cmp_0e648e10a3a0",
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_practice_2736fab291f0"
+        ],
+        "rrf": [
+          "cmp_7a22a746f905",
+          "chunk_practice_863be329d064",
+          "cmp_43f0c423fb12",
+          "cmp_0e648e10a3a0",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_comp_5a9e5e7ff8f80419",
+          "chunk_8ed9969836801c61"
+        ],
+        "rerank": [
+          "cmp_7a22a746f905",
+          "cmp_43f0c423fb12",
+          "cmp_0e648e10a3a0",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_comp_11ff691a67d9f882",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_7e18b121d0727eb7"
+        ],
+        "rerank_zh": [
+          "cmp_0e648e10a3a0",
+          "cmp_43f0c423fb12",
+          "chunk_7e18b121d0727eb7",
+          "cmp_7a22a746f905",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_56f2364984d283ff",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_6af874232515276f",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_practice_863be329d064"
+        ],
+        "rerank_ce": [
+          "chunk_7e18b121d0727eb7",
+          "cmp_0e648e10a3a0",
+          "cmp_43f0c423fb12",
+          "cmp_7a22a746f905",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_d404a981d710616e",
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_56f2364984d283ff"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.4308467671291832,
+          "cat_purity@5": 0.6
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 0.16666666666666666,
+          "nDCG@5": 0.07173519834210915,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.7031666714374551,
+          "cat_purity@5": 0.6
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 1.0,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.8145672023038535,
+          "cat_purity@5": 0.6
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.9871451602176229,
+          "cat_purity@5": 1.0
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.708995963673403,
+          "cat_purity@5": 1.0
+        }
+      },
+      "latency_ms_total": 2048.0,
+      "latency_ms_ce": 1410.9
+    },
+    {
+      "qid": "q13",
+      "query": "界面组件边界（非文字）的对比度要求",
+      "expected_topic": "ui_quality",
+      "labels": {
+        "chunk_render_0": 2,
+        "chunk_37cc807665c690f4": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_7fd9390ab401dc99",
+          "chunk_f9f68f6b7dd69610",
+          "chunk_ddc0c34b6f3fc15c",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_c49766f39810c473",
+          "chunk_cf9c247a37aba234",
+          "chunk_a0d0eb1f9c8690c6",
+          "chunk_practice_56b1bb950751",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_0951d250005df568"
+        ],
+        "bm25": [
+          "chunk_render_0",
+          "cmp_7a22a746f905",
+          "cmp_0e648e10a3a0",
+          "chunk_comp_a61b77a3ea4221a7",
+          "chunk_comp_2c15548abd924f14",
+          "chunk_comp_7c0f11f3be6ec1c9",
+          "chunk_practice_2736fab291f0",
+          "cmp_43f0c423fb12",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4"
+        ],
+        "rrf": [
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_practice_f90453ec712c",
+          "chunk_7fd9390ab401dc99",
+          "chunk_f9f68f6b7dd69610",
+          "chunk_ddc0c34b6f3fc15c"
+        ],
+        "rerank": [
+          "cmp_7a22a746f905",
+          "chunk_comp_9f965b73f92aeec3",
+          "chunk_practice_56b1bb950751",
+          "cmp_43f0c423fb12",
+          "chunk_practice_863be329d064",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_comp_f61d131f03f902c0"
+        ],
+        "rerank_zh": [
+          "chunk_37cc807665c690f4",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_671110a47c5d6746",
+          "chunk_75144f43f93dcdd8",
+          "chunk_35bd6d15b3949cab",
+          "chunk_56f2364984d283ff",
+          "chunk_7b2ca992be5ee35f",
+          "chunk_84b10def6d65384b"
+        ],
+        "rerank_ce": [
+          "chunk_37cc807665c690f4",
+          "chunk_5cdf913ee2ae736e",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_35bd6d15b3949cab",
+          "chunk_75144f43f93dcdd8",
+          "chunk_03a77fdc6a24f5ac",
+          "chunk_84b10def6d65384b",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_7b2ca992be5ee35f",
+          "chunk_671110a47c5d6746"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.5,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.8262346571285599,
+          "cat_purity@5": 0.2
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 1.0
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.4
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.5,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.27541155237618664,
+          "cat_purity@5": 0.0
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 0.5,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.27541155237618664,
+          "cat_purity@5": 0.0
+        }
+      },
+      "latency_ms_total": 2412.6,
+      "latency_ms_ce": 1712.1
+    },
+    {
+      "qid": "q14",
+      "query": "窄屏下表格表头折行怎么办",
+      "expected_topic": "ui_quality",
+      "labels": {
+        "chunk_render_1": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_render_1",
+          "chunk_148cde11d3439005",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_c6989e12aed913ab",
+          "chunk_56f2364984d283ff",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_d014b64a28d7da53",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_7e18b121d0727eb7",
+          "chunk_534b29c8bdaf1b39"
+        ],
+        "bm25": [
+          "chunk_render_1",
+          "chunk_practice_f90453ec712c"
+        ],
+        "rrf": [
+          "chunk_render_1",
+          "chunk_practice_f90453ec712c",
+          "chunk_148cde11d3439005",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_c6989e12aed913ab",
+          "chunk_56f2364984d283ff",
+          "chunk_b1a362ee0f77d0fc",
+          "chunk_d014b64a28d7da53",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_7e18b121d0727eb7"
+        ],
+        "rerank": [
+          "chunk_render_1",
+          "chunk_practice_f90453ec712c",
+          "chunk_56f2364984d283ff",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_148cde11d3439005",
+          "chunk_d014b64a28d7da53",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_c6989e12aed913ab",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_b1a362ee0f77d0fc"
+        ],
+        "rerank_zh": [
+          "chunk_ee58e48cc904eea4",
+          "chunk_7e18b121d0727eb7",
+          "chunk_render_1",
+          "chunk_practice_f90453ec712c",
+          "chunk_56f2364984d283ff",
+          "chunk_74e1bcb111ad4652",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_468129a15331f628",
+          "chunk_534b29c8bdaf1b39",
+          "chunk_comp_c26cdcbd94c236cf"
+        ],
+        "rerank_ce": [
+          "chunk_render_1",
+          "chunk_7e18b121d0727eb7",
+          "chunk_ee58e48cc904eea4",
+          "chunk_practice_f90453ec712c",
+          "chunk_comp_c26cdcbd94c236cf",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_56f2364984d283ff",
+          "chunk_74e1bcb111ad4652",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_534b29c8bdaf1b39"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 1.0,
+          "P@3": 0.5,
+          "P@5": 0.5,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.4
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.4
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "nDCG@5": 0.5,
+          "cat_purity@5": 0.4
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.4
+        }
+      },
+      "latency_ms_total": 2116.7,
+      "latency_ms_ce": 1428.3
+    },
+    {
+      "qid": "q15",
+      "query": "登录页的标记契约检查覆盖了哪些项",
+      "expected_topic": "ui_quality",
+      "labels": {
+        "chunk_practice_2736fab291f0": 2
+      },
+      "runs": {
+        "vector": [
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_468129a15331f628",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_74e1bcb111ad4652"
+        ],
+        "bm25": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c"
+        ],
+        "rrf": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_468129a15331f628",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_74e1bcb111ad4652"
+        ],
+        "rerank": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_468129a15331f628",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_74e1bcb111ad4652",
+          "chunk_comp_f61d131f03f902c0"
+        ],
+        "rerank_zh": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_468129a15331f628",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_74e1bcb111ad4652",
+          "chunk_comp_f61d131f03f902c0"
+        ],
+        "rerank_ce": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_468129a15331f628",
+          "chunk_83cb9aaa6543dc94",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_74e1bcb111ad4652"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 0.5,
+          "nDCG@5": 0.6309297535714574,
+          "cat_purity@5": 1.0
+        },
+        "bm25": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rrf": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.3333333333333333,
+          "P@5": 0.2,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 1.0
+        }
+      },
+      "latency_ms_total": 1491.7,
+      "latency_ms_ce": 821.7
+    },
+    {
+      "qid": "q16",
+      "query": "TradingView 页面的无障碍标记统计",
+      "expected_topic": "ui_quality",
+      "labels": {
+        "chunk_8ed9969836801c61": 2,
+        "chunk_ddffacf03c4238fa": 1,
+        "chunk_abbaf9b3e620d388": 1
+      },
+      "runs": {
+        "vector": [
+          "chunk_f3d6f9e6a5061563",
+          "chunk_74e1bcb111ad4652",
+          "chunk_56f2364984d283ff",
+          "chunk_8ed9969836801c61",
+          "chunk_468129a15331f628",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_71b1642f8ab1931a",
+          "chunk_ddffacf03c4238fa",
+          "chunk_12aa667dd0ce111d",
+          "chunk_d1495b51d099a2f8"
+        ],
+        "bm25": [
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_12aa667dd0ce111d",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_863be329d064",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c",
+          "chunk_82cca18b5c638462",
+          "chunk_f04837a8f7c322d1",
+          "chunk_e59ed9e0b24b38b8"
+        ],
+        "rrf": [
+          "chunk_f3d6f9e6a5061563",
+          "chunk_56f2364984d283ff",
+          "chunk_74e1bcb111ad4652",
+          "chunk_12aa667dd0ce111d",
+          "chunk_468129a15331f628",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_8ed9969836801c61",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_e83249bd3ba7"
+        ],
+        "rerank": [
+          "chunk_8ed9969836801c61",
+          "chunk_ddffacf03c4238fa",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_f3d6f9e6a5061563",
+          "chunk_12aa667dd0ce111d",
+          "chunk_56f2364984d283ff",
+          "chunk_74e1bcb111ad4652",
+          "chunk_practice_f90453ec712c",
+          "chunk_468129a15331f628",
+          "chunk_practice_e83249bd3ba7"
+        ],
+        "rerank_zh": [
+          "chunk_8ed9969836801c61",
+          "chunk_ddffacf03c4238fa",
+          "chunk_abbaf9b3e620d388",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_b749eeb14fb2d5d4",
+          "chunk_12aa667dd0ce111d",
+          "chunk_2671197a81fb3a9d",
+          "chunk_practice_f90453ec712c"
+        ],
+        "rerank_ce": [
+          "chunk_8ed9969836801c61",
+          "chunk_ddffacf03c4238fa",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_12aa667dd0ce111d",
+          "chunk_74e1bcb111ad4652",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_practice_f90453ec712c",
+          "chunk_abbaf9b3e620d388",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_56f2364984d283ff"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.2,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 0.25,
+          "nDCG@5": 0.3127697035039474,
+          "cat_purity@5": 0.2
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.0,
+          "MRR@10": 0.0,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.8
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": 0.3333333333333333,
+          "MRR@10": 0.125,
+          "nDCG@5": 0.0,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 0.6666666666666666,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.878961873034099,
+          "cat_purity@5": 0.6
+        },
+        "rerank_zh": {
+          "P@1": 1.0,
+          "P@3": 1.0,
+          "P@5": 0.6,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 1.0,
+          "cat_purity@5": 0.8
+        },
+        "rerank_ce": {
+          "P@1": 1.0,
+          "P@3": 0.6666666666666666,
+          "P@5": 0.4,
+          "R@10": 1.0,
+          "MRR@10": 1.0,
+          "nDCG@5": 0.878961873034099,
+          "cat_purity@5": 0.4
+        }
+      },
+      "latency_ms_total": 2091.0,
+      "latency_ms_ce": 1370.9
+    },
+    {
+      "qid": "q17",
+      "query": "WebGPU 计算着色器怎么写",
+      "expected_topic": "web_ui",
+      "labels": {},
+      "runs": {
+        "vector": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_82cca18b5c638462",
+          "chunk_71b1642f8ab1931a",
+          "chunk_671110a47c5d6746",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_f7f453335cfe0079",
+          "chunk_a93d025178c68ef8",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_c8e2c035c6b41922"
+        ],
+        "bm25": [],
+        "rrf": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_82cca18b5c638462",
+          "chunk_71b1642f8ab1931a",
+          "chunk_671110a47c5d6746",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_f7f453335cfe0079",
+          "chunk_a93d025178c68ef8",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_c8e2c035c6b41922"
+        ],
+        "rerank": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_82cca18b5c638462",
+          "chunk_71b1642f8ab1931a",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_671110a47c5d6746",
+          "chunk_c8e2c035c6b41922",
+          "chunk_f7f453335cfe0079",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_a93d025178c68ef8"
+        ],
+        "rerank_zh": [
+          "chunk_12aa667dd0ce111d",
+          "chunk_f04837a8f7c322d1",
+          "chunk_82cca18b5c638462",
+          "chunk_71b1642f8ab1931a",
+          "chunk_comp_f61d131f03f902c0",
+          "chunk_671110a47c5d6746",
+          "chunk_c8e2c035c6b41922",
+          "chunk_f7f453335cfe0079",
+          "chunk_e59ed9e0b24b38b8",
+          "chunk_a93d025178c68ef8"
+        ],
+        "rerank_ce": [
+          "chunk_f04837a8f7c322d1",
+          "chunk_12aa667dd0ce111d",
+          "chunk_45cb7746385069a1",
+          "chunk_671110a47c5d6746",
+          "chunk_f7f453335cfe0079",
+          "chunk_82cca18b5c638462",
+          "chunk_71b1642f8ab1931a",
+          "chunk_practice_56b1bb950751",
+          "chunk_a93d025178c68ef8",
+          "chunk_comp_f61d131f03f902c0"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        }
+      },
+      "latency_ms_total": 2781.9,
+      "latency_ms_ce": 2099.6
+    },
+    {
+      "qid": "q18",
+      "query": "OAuth2 设备码授权流程",
+      "expected_topic": "uiux_principles",
+      "labels": {},
+      "runs": {
+        "vector": [
+          "chunk_273960b708494058",
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c",
+          "cmp_7a22a746f905",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_b749eeb14fb2d5d4"
+        ],
+        "bm25": [],
+        "rrf": [
+          "chunk_273960b708494058",
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c",
+          "cmp_7a22a746f905",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_58cb8f527b2cf65c",
+          "chunk_b749eeb14fb2d5d4"
+        ],
+        "rerank": [
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c",
+          "chunk_273960b708494058",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "cmp_7a22a746f905",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_58cb8f527b2cf65c"
+        ],
+        "rerank_zh": [
+          "chunk_practice_863be329d064",
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_f90453ec712c",
+          "chunk_273960b708494058",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "cmp_7a22a746f905",
+          "chunk_7777adc0ac8fa6b9",
+          "chunk_58cb8f527b2cf65c"
+        ],
+        "rerank_ce": [
+          "chunk_practice_2736fab291f0",
+          "chunk_practice_863be329d064",
+          "chunk_practice_f90453ec712c",
+          "chunk_practice_56b1bb950751",
+          "chunk_practice_e83249bd3ba7",
+          "chunk_practice_3cc1d5a427a4",
+          "chunk_273960b708494058",
+          "chunk_b749eeb14fb2d5d4",
+          "cmp_7a22a746f905",
+          "chunk_7777adc0ac8fa6b9"
+        ]
+      },
+      "metrics": {
+        "vector": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "bm25": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rrf": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank_zh": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        },
+        "rerank_ce": {
+          "P@1": 0.0,
+          "P@3": 0.0,
+          "P@5": 0.0,
+          "R@10": NaN,
+          "MRR@10": 0.0,
+          "nDCG@5": NaN,
+          "cat_purity@5": 0.0
+        }
+      },
+      "latency_ms_total": 2198.7,
+      "latency_ms_ce": 1470.8
+    }
+  ],
+  "annotator": "本会话内的 AI agent（单标注者，非人类专家）"
+}

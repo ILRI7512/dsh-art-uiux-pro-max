@@ -1,0 +1,16 @@
+# 运行依赖（Python 3.11+，本机验证于 3.13.5）
+mcp>=1.2.0
+anyio>=4.0.0
+numpy>=1.26
+httpx>=0.27
+beautifulsoup4>=4.12
+pypdf>=4.0
+python-docx>=1.1
+
+# 开发/测试
+pytest>=8.0
+
+# 可选（按需安装，未安装时对应功能会明确报错，不会静默降级）
+# PyYAML>=6.0                     # 使用 YAML 配置
+# sentence-transformers>=3.0      # 本地神经向量模型
+# chromadb>=0.5                   # 将来替换本地向量层（当前未使用）

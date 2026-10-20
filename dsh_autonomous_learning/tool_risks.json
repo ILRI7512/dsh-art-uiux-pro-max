@@ -1,0 +1,384 @@
+{
+  "generated_at": "2026-10-19T15:43:58Z",
+  "prefix": "mcp__autolearn__",
+  "tools": {
+    "analyze_knowledge_gaps": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "分析知识缺口：按主题计算 L0-L5 覆盖、单一来源、过时、冲突，并登记缺口。"
+    },
+    "audit_knowledge_base": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "fix=true 时写入 duplicates/conflicts",
+      "description": "知识库体检：索引一致性、来源缺失、核验率、过时、重复与冲突（fix=true 会登记重复/冲突）。"
+    },
+    "backup_knowledge_base": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入备份目录",
+      "description": "备份知识库（SQLite 在线备份 + 向量索引 + 清单）。"
+    },
+    "cancel_learning_project": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "更新 projects.status",
+      "description": "取消学习项目（不删除数据，仅停止后续任务）"
+    },
+    "check_index_integrity": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "检查向量索引与元数据是否一致（孤儿向量、缺失向量、NaN）。"
+    },
+    "check_source_freshness": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "判断资料的时效状态（fresh/aging/stale/expired/unknown）并给出依据。"
+    },
+    "check_source_license": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "给出资料的使用许可判定与说明（未知就明确说未知，不做乐观假设）。"
+    },
+    "classify_knowledge": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "对文本做知识类型与分区分类（可解释打分，低置信度会明确提示）。"
+    },
+    "compare_sources": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "比较多个知识片段的来源、说法、数值与极性，列出分歧（不合并、不覆盖）。"
+    },
+    "create_learning_project": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 projects 表，可能写入 tasks 表",
+      "description": "创建学习项目：登记目标、领域、深度、允许数据源与验收标准，并可选立即生成学习计划。"
+    },
+    "create_practice_task": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 practice_tasks",
+      "description": "为知识生成练习任务（公式重算/代码执行/概念问答/流程清单），不可自动判分的类型会说明原因。"
+    },
+    "decompose_learning_goal": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "把学习目标拆成主题列表（领域模板 + 目标关键词，可解释；可选模型补充）。"
+    },
+    "detect_conflicts": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 conflicts/edges，并更新 chunks.conflict_status",
+      "description": "检测矛盾：数值不一致、极性相反、显式否定；登记冲突并保留双方证据。"
+    },
+    "discover_sources": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "发现候选资料：显式 URL/路径 + 本地语料目录 + （可选）注入的搜索通道，自动去重并给出质量先验。"
+    },
+    "evaluate_learning": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "评估学习成果：覆盖率、来源完整率、核验率、实践通过率、冲突/重复/过时与成本。"
+    },
+    "evaluate_practice_result": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "更新 practice_tasks.status",
+      "description": "评估实践结果：没有执行结果就判为未完成；规则评分会明确标注需要人工复核。"
+    },
+    "export_knowledge": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入导出文件",
+      "description": "导出知识为 JSONL/JSON/CSV（含来源与核验状态），用于备份或外部分析。"
+    },
+    "extract_code_examples": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "从文本中提取代码块（语言 + 代码），用于后续受限执行或静态审查。"
+    },
+    "extract_concepts": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "提取'术语 + 定义'结构（中文'是指/定义为'与英文 'is defined as'）。"
+    },
+    "extract_formulas": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "从文本提取公式候选（不校验正确性，校验请用 verify_formula）。"
+    },
+    "extract_knowledge": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "persist=true 时写入 chunks 与向量索引",
+      "description": "从文档/文本提取结构化知识草稿（规则优先，可选模型提议），默认入库到待核验分区。"
+    },
+    "find_duplicate_knowledge": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 duplicates 表",
+      "description": "查找完全重复与近似重复知识并登记（不自动删除，避免误合并）。"
+    },
+    "generate_learning_report": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 reports 目录",
+      "description": "生成学习报告（Markdown + JSON），包含成果、来源、冲突、失败与后续建议。"
+    },
+    "generate_learning_tasks": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 tasks 表",
+      "description": "根据未解决缺口与冲突生成补充学习任务（发现资料 / 提取 / 冲突分析）。"
+    },
+    "get_knowledge_details": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "获取知识完整详情：内容、状态、可靠性属性、核验记录、版本与关系。"
+    },
+    "get_knowledge_relations": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "获取知识关系：一跳邻居，或 depth>=2 时的子图（有节点上限）。"
+    },
+    "get_knowledge_sources": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "查询知识条目的来源与全部核验证据（可追溯性的入口）。"
+    },
+    "get_learning_metrics": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "获取学习指标明细（指标汇总 + 模型调用与成本估算）。"
+    },
+    "get_learning_progress": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "获取学习进度：任务分布、覆盖等级、缺口与冲突、最近运行轮次。"
+    },
+    "get_learning_project": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "获取学习项目状态（任务统计、知识量、预算配置）。"
+    },
+    "get_runtime_info": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "查看运行时信息：模式、路径、向量化器、模型、预算、索引与权限状态。"
+    },
+    "get_source_metadata": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "根据 URL/路径与发布时间，生成来源类型、质量先验、许可与时效判定（附依据）。"
+    },
+    "identify_assumptions": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "识别文本中的假设与前提条件（保留原句，便于后续核验适用条件）。"
+    },
+    "identify_uncertainties": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "识别不确定表述（可能/待验证/推测等），降低这些内容的可靠性权重。"
+    },
+    "invalidate_knowledge": {
+      "risk": "destructive",
+      "requires_confirmation": true,
+      "side_effects": "更新 chunks.status/freshness_status",
+      "description": "把知识标记为过时/失效或已被替代（不物理删除，保留审计与历史）。"
+    },
+    "list_knowledge_partitions": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "列出逻辑知识分区及其统计（数量、已核验、待核验、冲突、过时）。"
+    },
+    "list_learning_projects": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "列出学习项目，可按状态过滤。"
+    },
+    "list_learning_tools": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "列出本插件提供的所有工具及其风险等级与参数 schema。"
+    },
+    "list_scheduled_tasks": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "列出定时学习任务及其下次运行时间。"
+    },
+    "parse_document": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "解析文档结构：章节、语言、切块数量与预览（不写入知识库）。"
+    },
+    "pause_learning_project": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "更新 projects.status",
+      "description": "暂停学习项目（保留全部状态，可恢复）"
+    },
+    "plan_learning_path": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 tasks 表（幂等：已有计划则返回现状）",
+      "description": "生成学习路线：主题 → 发现 → 提取 → 核验 → 实践 → 评估 → 报告的任务 DAG（含依赖与验收条件）。"
+    },
+    "prioritize_learning_tasks": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "按价值、就绪状态与依赖深度对任务排序。"
+    },
+    "read_source": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "persist=true 时写入 sources/documents",
+      "description": "读取资料（本地文件或网页），返回正文、类型、来源元数据与内容指纹；可选落库为文档供后续提取。"
+    },
+    "rebuild_vector_index": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "重写 index 目录",
+      "description": "按元数据重建向量索引（换向量模型或索引损坏后使用）。"
+    },
+    "recommend_next_tasks": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "推荐下一步任务：就绪任务排序 + 缺口补充 + 冲突分析建议。"
+    },
+    "record_experiment_result": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 experiments",
+      "description": "记录人工/外部执行得到的实验结果（不运行代码），作为知识核验证据。"
+    },
+    "restore_knowledge_base": {
+      "risk": "destructive",
+      "requires_confirmation": true,
+      "side_effects": "替换数据库与索引文件",
+      "description": "从备份恢复知识库（恢复前自动保留 .pre-restore 副本并做完整性检查）。"
+    },
+    "resume_learning_project": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "更新 projects.status",
+      "description": "恢复已暂停的学习项目"
+    },
+    "retry_failed_task": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "更新 tasks.status/attempts",
+      "description": "把失败任务重置为待执行（可指定单个任务或全部失败任务）。"
+    },
+    "run_code_test": {
+      "risk": "execute",
+      "requires_confirmation": true,
+      "side_effects": "在 data/experiments 下创建产物目录并写入 practice_results",
+      "description": "在受限目录执行 Python 代码并记录环境/输出/退出码（lab 模式；进程级隔离，非安全沙箱）。"
+    },
+    "run_learning_experiment": {
+      "risk": "execute",
+      "requires_confirmation": true,
+      "side_effects": "创建实验产物目录并写入 experiments",
+      "description": "执行受控实验（spec 含 code 与断言），记录 spec/产物/结果，失败也保留证据。"
+    },
+    "run_learning_round": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "执行学习任务，写入知识与多个表",
+      "description": "执行一轮有界学习（规划→发现→提取→核验→实践→评估→报告），受预算与停止条件约束。"
+    },
+    "run_scheduler_tick": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "执行学习并更新 schedules",
+      "description": "检查并执行到期的定时学习任务（有界，不会无限循环）。"
+    },
+    "save_knowledge": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 chunks 与向量索引",
+      "description": "保存知识到知识库（默认落待审分区，状态 pending_verification，未核验前不会被视为事实）。"
+    },
+    "schedule_learning_task": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 schedules",
+      "description": "登记定时学习（间隔或指定时间）；后台执行依赖真实进程存活，不承诺永久运行。"
+    },
+    "search_knowledge": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "语义+关键词混合检索知识库；返回来源、核验状态、冲突与时效提示（相似不等于正确）。"
+    },
+    "search_knowledge_by_keyword": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "纯关键词检索（BM25 倒排表），不依赖向量，适合精确术语与代码符号。"
+    },
+    "search_sources": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "在已登记来源中检索（标题/地址/发布机构），可按类型与抓取状态过滤。"
+    },
+    "summarize_knowledge": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "抽取式摘要（不调用模型，不改变知识状态）。"
+    },
+    "update_knowledge": {
+      "risk": "write",
+      "requires_confirmation": false,
+      "side_effects": "写入 chunk_versions 并更新 chunks/向量",
+      "description": "更新知识内容/元数据：保留旧版本快照，内容变化会重置核验状态与置信度。"
+    },
+    "verify_formula": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "重算公式并与期望值比较（AST 白名单求值，不执行任意代码）。"
+    },
+    "verify_knowledge": {
+      "risk": "read",
+      "requires_confirmation": false,
+      "side_effects": "none",
+      "description": "按知识类型核验知识：证据达标才可能升级为 verified，否则保持待核验或转 disputed。"
+    }
+  }
+}

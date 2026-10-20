@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-10-20T01:28:09Z",
+  "case": "Vercel 产品站",
+  "url": "https://vercel.com/",
+  "http_status": 200,
+  "platform": "web",
+  "tech_stack": [
+    "next.js",
+    "react",
+    "styled-components",
+    "svelte"
+  ],
+  "sections": {
+    "Layout Analysis": [
+      {
+        "statement": "检出技术栈指纹: next.js, react, styled-components, svelte",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "HTML 中的静态指纹，非运行时确认"
+      },
+      {
+        "statement": "响应式断点 2 个；容器最大宽度档位: 未检出",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "@media 与 max-width 声明统计"
+      },
+      {
+        "statement": "间距取值高频档位: 14px×7, 6px×5, 48px×2",
+        "kind": "fact",
+        "confidence": 0.75,
+        "basis": "gap/padding/margin 声明统计"
+      },
+      {
+        "statement": "信息重心判断需要真实渲染截图，本工具未做渲染，因此不给结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ],
+    "Color Analysis": [
+      {
+        "statement": "页面出现频次最高的色值: #252525×6, #000×5, #fafafa×2, #fff×2",
+        "kind": "fact",
+        "confidence": 0.9,
+        "basis": "正则统计 HTML/CSS 文本中的十六进制色值"
+      },
+      {
+        "statement": "文本中出现 4 种不同色值（含主题变量与第三方样式）",
+        "kind": "fact",
+        "confidence": 0.7,
+        "basis": "色值计数，含非品牌色"
+      }
+    ],
+    "Background Analysis": [
+      {
+        "statement": "渐变出现 7 次、阴影规则 225 条",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "CSS 文本计数"
+      },
+      {
+        "statement": "渐变类型分布: linear-gradient×7",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "CSS 关键字计数"
+      },
+      {
+        "statement": "疑似包含噪点/纹理层（噪声函数或内嵌位图）",
+        "kind": "inference",
+        "confidence": 0.45,
+        "basis": "关键字命中，未做视觉确认"
+      }
+    ],
+    "Typography Analysis": [
+      {
+        "statement": "字体族: var(--font-mono)×2",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "font-family 声明统计"
+      }
+    ],
+    "Interaction Analysis": [
+      {
+        "statement": "过渡/动画声明 9 条，示例: 2s; 2s; 2s; 950ms; 1000ms; 950ms; 1000ms; 950ms",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "CSS 文本统计"
+      },
+      {
+        "statement": "未检出 prefers-reduced-motion 适配（可能在其他样式表）",
+        "kind": "inference",
+        "confidence": 0.4,
+        "basis": "仅基于当前抓取的 HTML/CSS"
+      }
+    ],
+    "Accessibility Analysis": [
+      {
+        "statement": "aria 属性 130 个、role 51 个；img 17 张，其中带 alt 17 张（100%）",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "静态标记统计，不等于无障碍达标"
+      },
+      {
+        "statement": "对比度、焦点顺序、屏幕阅读器表现需要真实渲染与工具检测，本工具未测",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      },
+      {
+        "statement": "疑似存在跳转到主内容的 skip link",
+        "kind": "inference",
+        "confidence": 0.5,
+        "basis": "关键字命中"
+      }
+    ],
+    "Visual Language": [
+      {
+        "statement": "整体风格判断（如极简/拟物/高对比）依赖视觉主观判断，需人工或视觉模型复核，本工具不下结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ]
+  },
+  "metrics": {
+    "top_colors": [
+      [
+        "#252525",
+        6
+      ],
+      [
+        "#000",
+        5
+      ],
+      [
+        "#fafafa",
+        2
+      ],
+      [
+        "#fff",
+        2
+      ]
+    ],
+    "font_families": [
+      [
+        "var(--font-mono)",
+        2
+      ]
+    ],
+    "media_queries": 2,
+    "max_widths": [],
+    "spacing": [
+      [
+        "14px",
+        7
+      ],
+      [
+        "6px",
+        5
+      ],
+      [
+        "48px",
+        2
+      ]
+    ],
+    "aria_attrs": 130,
+    "roles": 51,
+    "img_total": 17,
+    "img_with_alt": 17
+  },
+  "ingested_chunks": 13,
+  "duplicates": [
+    {
+      "chunk_id": "chunk_340e76003695af7d",
+      "duplicate_of": "chunk_422406b2febc95ba",
+      "reason": "content_hash"
+    },
+    {
+      "chunk_id": "chunk_81f66f9c6f2ce063",
+      "duplicate_of": "chunk_33e90e869c4debe3",
+      "reason": "content_hash"
+    },
+    {
+      "chunk_id": "chunk_74dd003f5dddff60",
+      "duplicate_of": "chunk_5c1658ef3cae2d7d",
+      "reason": "content_hash"
+    }
+  ],
+  "potential_conflicts": [
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 8.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 8.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 8.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 6.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 6.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 12.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 12.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 12.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 4.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 4.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 4.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 11.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 11.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 11.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 0.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 0.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 0.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 40.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 40.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 40.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 1263.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 1263.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 1263.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 639.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 639.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 639.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 48.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 306.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 14.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://stripe.com/",
+      "a_value": 306.0,
+      "b_source": "https://vercel.com/",
+      "b_value": 6.0
+    }
+  ]
+}

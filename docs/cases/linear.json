@@ -1,0 +1,557 @@
+{
+  "generated_at": "2026-10-20T01:28:01Z",
+  "case": "Linear 产品站",
+  "url": "https://linear.app/",
+  "http_status": 200,
+  "platform": "web",
+  "tech_stack": [
+    "next.js",
+    "react",
+    "styled-components"
+  ],
+  "sections": {
+    "Layout Analysis": [
+      {
+        "statement": "检出技术栈指纹: next.js, react, styled-components",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "HTML 中的静态指纹，非运行时确认"
+      },
+      {
+        "statement": "响应式断点 19 个；容器最大宽度档位: 640px×10, 1280px×4, 1024px×3, 250px×3",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "@media 与 max-width 声明统计"
+      },
+      {
+        "statement": "间距取值高频档位: 8px×46, 6px×9, 12px×5, 4px×5, 11px×4, 0px×2, 40px×1",
+        "kind": "fact",
+        "confidence": 0.75,
+        "basis": "gap/padding/margin 声明统计"
+      },
+      {
+        "statement": "信息重心判断需要真实渲染截图，本工具未做渲染，因此不给结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ],
+    "Color Analysis": [
+      {
+        "statement": "页面出现频次最高的色值: #e2e4e7×429, #e4e5e9×150, #f79ce0×147, #55cdff×89, #9c9da1×74, #08090a×69, #fff×48, #2e2e32×42",
+        "kind": "fact",
+        "confidence": 0.9,
+        "basis": "正则统计 HTML/CSS 文本中的十六进制色值"
+      },
+      {
+        "statement": "文本中出现 42 种不同色值（含主题变量与第三方样式）",
+        "kind": "fact",
+        "confidence": 0.7,
+        "basis": "色值计数，含非品牌色"
+      }
+    ],
+    "Background Analysis": [
+      {
+        "statement": "渐变出现 4 次、阴影规则 0 条",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "CSS 文本计数"
+      },
+      {
+        "statement": "渐变类型分布: linear-gradient×4",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "CSS 关键字计数"
+      },
+      {
+        "statement": "疑似包含噪点/纹理层（噪声函数或内嵌位图）",
+        "kind": "inference",
+        "confidence": 0.45,
+        "basis": "关键字命中，未做视觉确认"
+      }
+    ],
+    "Typography Analysis": [
+      {
+        "statement": "字体族: var(--font-monospace)×62",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "font-family 声明统计"
+      },
+      {
+        "statement": "字号档位: 0.6em×58, 0.9em×58, 16px×2",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "font-size 声明统计"
+      }
+    ],
+    "Component Analysis": [
+      {
+        "statement": "圆角档位: 50%×7",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "border-radius 声明统计"
+      }
+    ],
+    "Interaction Analysis": [
+      {
+        "statement": "过渡/动画声明 302 条，示例: grid-dot-0-0-upDown 2800ms steps(1, end) infinite; grid-dot-0-0-upDown 2800ms steps(1, end) infinite; grid-dot-0-1-upDown 2800ms steps(1, end) infinite; grid-dot-0-1-upDown 2800ms steps(1, end) infinite; grid-dot-0-2-upDown 2800ms steps(1, end) infinite; grid-dot-0-2-upDown 2800ms steps(1, end) infinite; grid-dot-0-3-upDown 2800ms steps(1, end) infinite; grid-dot-0-3-upDown 2800ms steps(1, end) infinite",
+        "kind": "fact",
+        "confidence": 0.8,
+        "basis": "CSS 文本统计"
+      },
+      {
+        "statement": "未检出 prefers-reduced-motion 适配（可能在其他样式表）",
+        "kind": "inference",
+        "confidence": 0.4,
+        "basis": "仅基于当前抓取的 HTML/CSS"
+      }
+    ],
+    "Accessibility Analysis": [
+      {
+        "statement": "aria 属性 228 个、role 149 个；img 38 张，其中带 alt 38 张（100%）",
+        "kind": "fact",
+        "confidence": 0.85,
+        "basis": "静态标记统计，不等于无障碍达标"
+      },
+      {
+        "statement": "对比度、焦点顺序、屏幕阅读器表现需要真实渲染与工具检测，本工具未测",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      },
+      {
+        "statement": "疑似存在跳转到主内容的 skip link",
+        "kind": "inference",
+        "confidence": 0.5,
+        "basis": "关键字命中"
+      }
+    ],
+    "Visual Language": [
+      {
+        "statement": "整体风格判断（如极简/拟物/高对比）依赖视觉主观判断，需人工或视觉模型复核，本工具不下结论",
+        "kind": "fact",
+        "confidence": 1.0,
+        "basis": "能力边界声明"
+      }
+    ]
+  },
+  "metrics": {
+    "top_colors": [
+      [
+        "#e2e4e7",
+        429
+      ],
+      [
+        "#e4e5e9",
+        150
+      ],
+      [
+        "#f79ce0",
+        147
+      ],
+      [
+        "#55cdff",
+        89
+      ],
+      [
+        "#9c9da1",
+        74
+      ],
+      [
+        "#08090a",
+        69
+      ],
+      [
+        "#fff",
+        48
+      ],
+      [
+        "#2e2e32",
+        42
+      ]
+    ],
+    "font_families": [
+      [
+        "var(--font-monospace)",
+        62
+      ]
+    ],
+    "font_sizes": [
+      [
+        "0.6em",
+        58
+      ],
+      [
+        "0.9em",
+        58
+      ],
+      [
+        "16px",
+        2
+      ]
+    ],
+    "media_queries": 19,
+    "max_widths": [
+      [
+        "640px",
+        10
+      ],
+      [
+        "1280px",
+        4
+      ],
+      [
+        "1024px",
+        3
+      ],
+      [
+        "250px",
+        3
+      ],
+      [
+        "768px",
+        2
+      ]
+    ],
+    "spacing": [
+      [
+        "8px",
+        46
+      ],
+      [
+        "6px",
+        9
+      ],
+      [
+        "12px",
+        5
+      ],
+      [
+        "4px",
+        5
+      ],
+      [
+        "11px",
+        4
+      ],
+      [
+        "0px",
+        2
+      ],
+      [
+        "40px",
+        1
+      ]
+    ],
+    "radius": [
+      [
+        "50%",
+        7
+      ]
+    ],
+    "aria_attrs": 228,
+    "roles": 149,
+    "img_total": 38,
+    "img_with_alt": 38
+  },
+  "ingested_chunks": 15,
+  "duplicates": [
+    {
+      "chunk_id": "chunk_422406b2febc95ba",
+      "duplicate_of": "chunk_340e76003695af7d",
+      "reason": "content_hash"
+    },
+    {
+      "chunk_id": "chunk_33e90e869c4debe3",
+      "duplicate_of": "chunk_052a762275dd4f8e",
+      "reason": "content_hash"
+    },
+    {
+      "chunk_id": "chunk_5c1658ef3cae2d7d",
+      "duplicate_of": "chunk_74dd003f5dddff60",
+      "reason": "content_hash"
+    }
+  ],
+  "potential_conflicts": [
+    {
+      "key": "design_system|%",
+      "a_source": "https://ui.shadcn.com/",
+      "a_value": 25.0,
+      "b_source": "https://linear.app/",
+      "b_value": 50.0
+    },
+    {
+      "key": "design_system|%",
+      "a_source": "https://ui.shadcn.com/",
+      "a_value": 75.0,
+      "b_source": "https://linear.app/",
+      "b_value": 50.0
+    },
+    {
+      "key": "design_system|%",
+      "a_source": "https://ui.shadcn.com/",
+      "a_value": 100.0,
+      "b_source": "https://linear.app/",
+      "b_value": 50.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1280.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1024.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 250.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 8.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 11.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 0.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 640.0,
+      "b_source": "https://linear.app/",
+      "b_value": 40.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 640.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1024.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 250.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 8.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 11.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 0.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1280.0,
+      "b_source": "https://linear.app/",
+      "b_value": 40.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 640.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1280.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 250.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 8.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 4.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 11.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 0.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 1024.0,
+      "b_source": "https://linear.app/",
+      "b_value": 40.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 640.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1280.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 1024.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 8.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 6.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 12.0
+    },
+    {
+      "key": "web_ui|px",
+      "a_source": "https://linear.app/",
+      "a_value": 250.0,
+      "b_source": "https://linear.app/",
+      "b_value": 4.0
+    }
+  ]
+}

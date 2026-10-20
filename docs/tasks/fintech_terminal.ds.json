@@ -1,0 +1,320 @@
+{
+  "task": "审计现有行情页面的视觉与无障碍问题",
+  "task_type": "fintech_terminal",
+  "direction": {
+    "name": "Industrial Dense（工业高密度）",
+    "idea": "为高频操作优化，牺牲呼吸感换信息密度与确定性",
+    "style": "深灰/蓝灰中性底，细边框分区",
+    "color": "低饱和中性色阶 + 状态语义色（涨/跌/警告）",
+    "type": "系统无衬线，等宽数字用于数值列",
+    "layout": "多栏密集布局，固定表头，紧凑行高",
+    "background": "无渐变，允许极细分割线",
+    "interaction": "即时反馈优先，动效短（≤100ms），避免大位移",
+    "fits": "交易终端、监控台、后台管理系统",
+    "drawbacks": "视觉疲劳风险高，长时使用需要降对比选项",
+    "key": "industrial_dense",
+    "excluded_defaults_checked": [
+      "玻璃拟态",
+      "深色背景",
+      "蓝紫渐变",
+      "发光边框"
+    ]
+  },
+  "design_system": {
+    "direction": "industrial_dense",
+    "tokens": {
+      "color": {
+        "bg": "#14171c",
+        "fg": "#e6e9ee",
+        "muted": "#9aa3af",
+        "accent": "#4c9aff",
+        "surface": "#1c2027",
+        "positive": "#4ade80",
+        "negative": "#f87171",
+        "warning": "#fbbf24"
+      },
+      "type_scale_px": [
+        12,
+        14,
+        16,
+        20,
+        28,
+        40,
+        56
+      ],
+      "space_scale_px": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "radius_px": [
+        0,
+        4,
+        8,
+        12,
+        16
+      ],
+      "shadow": [
+        "0 1px 2px rgba(0,0,0,.06)",
+        "0 8px 24px rgba(0,0,0,.10)"
+      ],
+      "motion": {
+        "fast_ms": 120,
+        "base_ms": 180,
+        "easing": "cubic-bezier(.2,.8,.2,1)",
+        "reduced_motion": "支持 prefers-reduced-motion"
+      }
+    },
+    "component_states": [
+      "default",
+      "hover",
+      "active",
+      "focus-visible",
+      "disabled",
+      "loading",
+      "error"
+    ],
+    "responsive": [
+      "compact <600",
+      "medium 600–1023",
+      "expanded ≥1024"
+    ],
+    "a11y": [
+      "焦点可见（≥3:1 轮廓对比）",
+      "触控目标 ≥44×44",
+      "不依赖颜色单独传达状态"
+    ],
+    "contrast": [
+      {
+        "pair": "正文/背景",
+        "fg": "#e6e9ee",
+        "bg": "#14171c",
+        "ratio": 14.76,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "次要文字/背景",
+        "fg": "#9aa3af",
+        "bg": "#14171c",
+        "ratio": 7.04,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "强调色/背景",
+        "fg": "#4c9aff",
+        "bg": "#14171c",
+        "ratio": 6.31,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "正文/卡片面",
+        "fg": "#e6e9ee",
+        "bg": "#1c2027",
+        "ratio": 13.42,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "涨/正向",
+        "fg": "#4ade80",
+        "bg": "#14171c",
+        "ratio": 10.31,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "跌/负向",
+        "fg": "#f87171",
+        "bg": "#14171c",
+        "ratio": 6.49,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      }
+    ],
+    "failing_pairs": [],
+    "verified": false,
+    "note": "对比度为公式实算；其余项为设计约定，尚未经真实任务验证"
+  },
+  "audit": {
+    "items": [
+      {
+        "item": "visual_hierarchy",
+        "status": "pass",
+        "detail": "字号档位 6 档：12px, 14px, 16px, 20px, 28px, 56px",
+        "evidence": {
+          "font_sizes": [
+            12.0,
+            14.0,
+            16.0,
+            20.0,
+            28.0,
+            56.0
+          ]
+        }
+      },
+      {
+        "item": "decoration",
+        "status": "pass",
+        "detail": "阴影 2 处、渐变 0 处",
+        "evidence": {
+          "shadows": 2,
+          "gradients": 0
+        }
+      },
+      {
+        "item": "consistency",
+        "status": "pass",
+        "detail": "色值 8 个、字体族 1 种",
+        "evidence": {
+          "colors": [
+            "#14171c",
+            "#1c2027",
+            "#4ade80",
+            "#4c9aff",
+            "#9aa3af",
+            "#e6e9ee",
+            "#f87171",
+            "#fbbf24"
+          ],
+          "font_families": [
+            "Inter,system-ui,sans-serif"
+          ]
+        }
+      },
+      {
+        "item": "component_language",
+        "status": "pass",
+        "detail": "圆角档位 2 档: 12, 999",
+        "evidence": {
+          "radii": [
+            "12",
+            "999"
+          ]
+        }
+      },
+      {
+        "item": "background_readability",
+        "status": "pass",
+        "detail": "正文对比度最低 7.04:1",
+        "evidence": {
+          "results": [
+            {
+              "pair": "正文/背景",
+              "fg": "#e6e9ee",
+              "bg": "#14171c",
+              "ratio": 14.76,
+              "AA_normal": true,
+              "AA_large": true,
+              "AAA_normal": true,
+              "ui_component": true,
+              "measured": true
+            },
+            {
+              "pair": "次要/背景",
+              "fg": "#9aa3af",
+              "bg": "#14171c",
+              "ratio": 7.04,
+              "AA_normal": true,
+              "AA_large": true,
+              "AAA_normal": true,
+              "ui_component": true,
+              "measured": true
+            }
+          ]
+        }
+      },
+      {
+        "item": "responsive_overflow",
+        "status": "pass",
+        "detail": "未发现明显固定宽溢出",
+        "evidence": {
+          "fixed_widths": []
+        }
+      },
+      {
+        "item": "interaction_states",
+        "status": "pass",
+        "detail": "关键交互状态齐全",
+        "evidence": {
+          "states": {
+            ":hover": 1,
+            ":focus": 1,
+            ":active": 1,
+            ":disabled": 1,
+            "focus-visible": 1
+          }
+        }
+      },
+      {
+        "item": "accessibility",
+        "status": "warn",
+        "detail": "无 aria 标注（可能缺语义角色）；img alt 覆盖 100%（0/0），aria 属性 0 个",
+        "evidence": {
+          "aria": 0,
+          "img": 0,
+          "with_alt": 0
+        }
+      },
+      {
+        "item": "motion_performance",
+        "status": "pass",
+        "detail": "过渡时长 未声明；触发布局动画 0 处",
+        "evidence": {
+          "durations": [],
+          "layout_animations": 0
+        }
+      },
+      {
+        "item": "design_drift",
+        "status": "pass",
+        "detail": "非 token 色值 0 个",
+        "evidence": {
+          "drift_colors": []
+        }
+      }
+    ],
+    "counts": {
+      "pass": 9,
+      "warn": 1
+    },
+    "measured_items": 10,
+    "note": "unmeasured 表示当前输入不足以判定；不得当作通过。"
+  },
+  "feedback": {
+    "title": "方向 Industrial Dense（工业高密度） 的 token 基线",
+    "content": "方向 Industrial Dense（工业高密度） 的 token 基线｜对比度实算见报告；尚未经过真实用户或生产验证",
+    "category": "financial_dashboard",
+    "scope": "project",
+    "partition": "project_knowledge",
+    "level": "L2",
+    "verified": false,
+    "source_url": "",
+    "content_hash": "efdcb51cb51cbd00b9cf407c19cdc348d514f76ebd4fe77bf6299921b6a99787"
+  }
+}

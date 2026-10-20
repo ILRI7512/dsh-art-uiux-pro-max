@@ -1,0 +1,26 @@
+{
+  "shadcn-ui": {
+    "sha": "ba1503c64472b82256d9de95e2e62c5901a38e8b",
+    "date": "2026-10-19T09:28:54Z"
+  },
+  "ant-design": {
+    "sha": "c275ff818dcc608c69dc09520468cd935c1ea2c3",
+    "date": "2026-10-19T08:13:41Z"
+  },
+  "headlessui": {
+    "sha": "eea57cf46fd6767ed1059012f7073b88eb159fba",
+    "date": "2026-04-13T16:12:23Z"
+  },
+  "tremor": {
+    "sha": "ca4d588f47820ff3d514d37fa4ee08a4222dec11",
+    "date": "2025-10-10T13:08:21Z"
+  },
+  "vico": {
+    "sha": "eeebede537fd60faeaafc42de56545bf36ce41ce",
+    "date": "2026-10-18T12:29:41Z"
+  },
+  "landscapist": {
+    "sha": "4ff7cb22a71147aa45e56dd8ca74f91c10ae42e0",
+    "date": "2026-10-15T10:54:32Z"
+  }
+}

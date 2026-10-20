@@ -1,0 +1,13 @@
+# 引擎运行期数据（数据库、向量索引、日志、语料缓存）
+dsh_autonomous_learning/data/
+# 抓取与模型缓存
+.cache/
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+# 本地备份
+*.bak-*
+*.bak
+# 系统垃圾
+.DS_Store

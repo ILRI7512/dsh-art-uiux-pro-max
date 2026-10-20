@@ -1,0 +1,63 @@
+{
+  "breakpoints": [
+    320,
+    375,
+    414,
+    768,
+    1024,
+    1440
+  ],
+  "rows": [
+    {
+      "width": 320,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    },
+    {
+      "width": 375,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    },
+    {
+      "width": 414,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    },
+    {
+      "width": 768,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    },
+    {
+      "width": 1024,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    },
+    {
+      "width": 1440,
+      "status": "pass",
+      "detail": "未发现固定宽溢出风险",
+      "overflow_candidates": []
+    }
+  ],
+  "signals": {
+    "fixed_widths": [],
+    "max_widths": [],
+    "media_queries": 0,
+    "tap_targets": [],
+    "tap_targets_below_44": [],
+    "fonts_below_12px": []
+  },
+  "counts": {
+    "pass": 6,
+    "warn": 0,
+    "fail": 0
+  },
+  "measured": false,
+  "note": "静态推断，未做真实设备渲染；实际重排与溢出需浏览器验证。"
+}

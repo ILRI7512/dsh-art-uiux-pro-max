@@ -1,0 +1,320 @@
+{
+  "task": "建立一套可复用的设计 Token 系统",
+  "task_type": "design_system",
+  "direction": {
+    "name": "Editorial Light（编辑部留白）",
+    "idea": "以阅读节奏为第一优先级，靠留白与字号对比建立秩序",
+    "style": "纸感浅底、低饱和、强排版层级",
+    "color": "暖白底 + 近黑字 + 单一强调色（饱和度中等）",
+    "type": "衬线大标题 + 无衬线正文，字号跨度 3 档以上",
+    "layout": "单栏窄容器，长段落，弱化卡片边界",
+    "background": "纯色或极轻纸纹，无渐变",
+    "interaction": "轻微淡入与下划线反馈，时长 120–180ms",
+    "fits": "内容型站点、品牌官网、长文阅读",
+    "drawbacks": "信息密度低，不适合高频操作台",
+    "key": "editorial_light",
+    "excluded_defaults_checked": [
+      "玻璃拟态",
+      "深色背景",
+      "蓝紫渐变",
+      "发光边框"
+    ]
+  },
+  "design_system": {
+    "direction": "editorial_light",
+    "tokens": {
+      "color": {
+        "bg": "#faf8f4",
+        "fg": "#15130f",
+        "muted": "#6b6459",
+        "accent": "#8a4b2a",
+        "surface": "#ffffff",
+        "positive": "#1c6b3a",
+        "negative": "#a32118",
+        "warning": "#8a5a00"
+      },
+      "type_scale_px": [
+        12,
+        14,
+        16,
+        20,
+        28,
+        40,
+        56
+      ],
+      "space_scale_px": [
+        4,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64
+      ],
+      "radius_px": [
+        0,
+        4,
+        8,
+        12,
+        16
+      ],
+      "shadow": [
+        "0 1px 2px rgba(0,0,0,.06)",
+        "0 8px 24px rgba(0,0,0,.10)"
+      ],
+      "motion": {
+        "fast_ms": 120,
+        "base_ms": 180,
+        "easing": "cubic-bezier(.2,.8,.2,1)",
+        "reduced_motion": "支持 prefers-reduced-motion"
+      }
+    },
+    "component_states": [
+      "default",
+      "hover",
+      "active",
+      "focus-visible",
+      "disabled",
+      "loading",
+      "error"
+    ],
+    "responsive": [
+      "compact <600",
+      "medium 600–1023",
+      "expanded ≥1024"
+    ],
+    "a11y": [
+      "焦点可见（≥3:1 轮廓对比）",
+      "触控目标 ≥44×44",
+      "不依赖颜色单独传达状态"
+    ],
+    "contrast": [
+      {
+        "pair": "正文/背景",
+        "fg": "#15130f",
+        "bg": "#faf8f4",
+        "ratio": 17.49,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "次要文字/背景",
+        "fg": "#6b6459",
+        "bg": "#faf8f4",
+        "ratio": 5.51,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "强调色/背景",
+        "fg": "#8a4b2a",
+        "bg": "#faf8f4",
+        "ratio": 6.34,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "正文/卡片面",
+        "fg": "#15130f",
+        "bg": "#ffffff",
+        "ratio": 18.55,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "涨/正向",
+        "fg": "#1c6b3a",
+        "bg": "#faf8f4",
+        "ratio": 6.16,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "ui_component": true,
+        "measured": true
+      },
+      {
+        "pair": "跌/负向",
+        "fg": "#a32118",
+        "bg": "#faf8f4",
+        "ratio": 7.1,
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "ui_component": true,
+        "measured": true
+      }
+    ],
+    "failing_pairs": [],
+    "verified": false,
+    "note": "对比度为公式实算；其余项为设计约定，尚未经真实任务验证"
+  },
+  "audit": {
+    "items": [
+      {
+        "item": "visual_hierarchy",
+        "status": "pass",
+        "detail": "字号档位 6 档：12px, 14px, 16px, 20px, 28px, 56px",
+        "evidence": {
+          "font_sizes": [
+            12.0,
+            14.0,
+            16.0,
+            20.0,
+            28.0,
+            56.0
+          ]
+        }
+      },
+      {
+        "item": "decoration",
+        "status": "pass",
+        "detail": "阴影 2 处、渐变 0 处",
+        "evidence": {
+          "shadows": 2,
+          "gradients": 0
+        }
+      },
+      {
+        "item": "consistency",
+        "status": "pass",
+        "detail": "色值 8 个、字体族 1 种",
+        "evidence": {
+          "colors": [
+            "#15130f",
+            "#1c6b3a",
+            "#6b6459",
+            "#8a4b2a",
+            "#8a5a00",
+            "#a32118",
+            "#faf8f4",
+            "#ffffff"
+          ],
+          "font_families": [
+            "Inter,system-ui,sans-serif"
+          ]
+        }
+      },
+      {
+        "item": "component_language",
+        "status": "pass",
+        "detail": "圆角档位 2 档: 12, 999",
+        "evidence": {
+          "radii": [
+            "12",
+            "999"
+          ]
+        }
+      },
+      {
+        "item": "background_readability",
+        "status": "pass",
+        "detail": "正文对比度最低 5.51:1",
+        "evidence": {
+          "results": [
+            {
+              "pair": "正文/背景",
+              "fg": "#15130f",
+              "bg": "#faf8f4",
+              "ratio": 17.49,
+              "AA_normal": true,
+              "AA_large": true,
+              "AAA_normal": true,
+              "ui_component": true,
+              "measured": true
+            },
+            {
+              "pair": "次要/背景",
+              "fg": "#6b6459",
+              "bg": "#faf8f4",
+              "ratio": 5.51,
+              "AA_normal": true,
+              "AA_large": true,
+              "AAA_normal": false,
+              "ui_component": true,
+              "measured": true
+            }
+          ]
+        }
+      },
+      {
+        "item": "responsive_overflow",
+        "status": "pass",
+        "detail": "未发现明显固定宽溢出",
+        "evidence": {
+          "fixed_widths": []
+        }
+      },
+      {
+        "item": "interaction_states",
+        "status": "pass",
+        "detail": "关键交互状态齐全",
+        "evidence": {
+          "states": {
+            ":hover": 1,
+            ":focus": 1,
+            ":active": 1,
+            ":disabled": 1,
+            "focus-visible": 1
+          }
+        }
+      },
+      {
+        "item": "accessibility",
+        "status": "warn",
+        "detail": "无 aria 标注（可能缺语义角色）；img alt 覆盖 100%（0/0），aria 属性 0 个",
+        "evidence": {
+          "aria": 0,
+          "img": 0,
+          "with_alt": 0
+        }
+      },
+      {
+        "item": "motion_performance",
+        "status": "pass",
+        "detail": "过渡时长 未声明；触发布局动画 0 处",
+        "evidence": {
+          "durations": [],
+          "layout_animations": 0
+        }
+      },
+      {
+        "item": "design_drift",
+        "status": "pass",
+        "detail": "非 token 色值 0 个",
+        "evidence": {
+          "drift_colors": []
+        }
+      }
+    ],
+    "counts": {
+      "pass": 9,
+      "warn": 1
+    },
+    "measured_items": 10,
+    "note": "unmeasured 表示当前输入不足以判定；不得当作通过。"
+  },
+  "feedback": {
+    "title": "方向 Editorial Light（编辑部留白） 的 token 基线",
+    "content": "方向 Editorial Light（编辑部留白） 的 token 基线｜对比度实算见报告；尚未经过真实用户或生产验证",
+    "category": "design_system",
+    "scope": "project",
+    "partition": "project_knowledge",
+    "level": "L2",
+    "verified": false,
+    "source_url": "",
+    "content_hash": "a2e4302c86e821675b04588ddb9a880608b5163de1490b4aa86850e024bfcc6f"
+  }
+}
