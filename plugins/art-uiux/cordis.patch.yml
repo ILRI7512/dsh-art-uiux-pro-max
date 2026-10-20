@@ -1,6 +1,12 @@
 # Art UI/UX Pro Max（TS 原生插件）
 #
 # 16 个工具由 dist/plugin/index.js 直接注册到 ctx.tools；
-# 不再启动 Python / MCP 子进程，因此本 bundle 不需要向 profile 树插入 entry。
+# 不再启动 Python / MCP 子进程。
+#
+# 本行把插件自身插入 profile；没有它，bundle 只是被"选中"，插件不会被实例化。
+# （`dsh plugin add` 会代写这一行；经 plugin_manager install_bundle 安装时必须自带。）
 # 需要 MCP 兼容层时，单独运行 `node dist/mcp/server.js`。
-[]
+- insert:
+    - id: art-uiux
+      name: '@local/art-uiux'
+      config: {}

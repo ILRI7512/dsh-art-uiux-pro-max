@@ -39,17 +39,25 @@ export function apply(ctx, config = {}) {
             }
         }
         const offRoutes = [];
-        if (ctx.webServer && typeof ctx.webServer.register === 'function') {
-            for (const route of [settingsRoute(services), statsRoute(services)]) {
-                try {
-                    const off = ctx.webServer.register(route);
-                    if (typeof off === 'function')
-                        offRoutes.push(off);
-                }
-                catch (error) {
-                    console.warn(`[art-uiux] 路由注册失败 ${route.path}: ${error instanceof Error ? error.message : String(error)}`);
+        // webServer 是可选服务：Cordis 对未 inject 的服务取值会抛错，
+        // 因此这里必须包一层 try/catch；headless profile 下只跳过设置卡接口。
+        try {
+            const server = ctx.webServer;
+            if (server && typeof server.register === 'function') {
+                for (const route of [settingsRoute(services), statsRoute(services)]) {
+                    try {
+                        const off = server.register(route);
+                        if (typeof off === 'function')
+                            offRoutes.push(off);
+                    }
+                    catch (error) {
+                        console.warn(`[art-uiux] 路由注册失败 ${route.path}: ${error instanceof Error ? error.message : String(error)}`);
+                    }
                 }
             }
+        }
+        catch (error) {
+            console.warn(`[art-uiux] webServer 不可用，设置卡接口跳过: ${error instanceof Error ? error.message : String(error)}`);
         }
         console.log(`[art-uiux] 原生工具已注册: ${tools.length} 个；数据目录 ${services.dataDir}`);
         return () => {
