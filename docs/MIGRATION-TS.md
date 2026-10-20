@@ -29,6 +29,7 @@ TS 版本把运行时收敛为 Node 单进程：
 | `art_uiux/components.py` | `src/domain/components.ts` |
 | `art_uiux/metrics.py` / `rerank.py` | `src/domain/metrics.ts` / `rerank.ts` |
 | `art_uiux/tasks_special.py` | `src/domain/tasks-special.ts` |
+| 设计智能库（新增） | `src/domain/design-library.ts` + `resources/design-library.json` |
 | `art_uiux/mcp_server.py` | `src/mcp/server.ts` + `src/application/tools.ts` |
 | `dsh_autonomous_learning/*` | 精简为 `src/infra/store.ts`（只保留本项目需要的行/倒排/向量/检索） |
 | `scripts/*.py` | `src/cli.ts` |

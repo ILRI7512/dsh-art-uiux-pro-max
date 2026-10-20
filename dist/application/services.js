@@ -1,5 +1,5 @@
 /**
- * 应用服务：CLI、13 个原生 DSH 工具与 MCP 适配层共用同一份业务逻辑。
+ * 应用服务：CLI、16 个原生 DSH 工具与 MCP 适配层共用同一份业务逻辑。
  * 任何“未验证”结论都在返回值里带 warnings，不靠调用方自觉。
  */
 import { existsSync, readFileSync } from 'node:fs';
@@ -21,6 +21,7 @@ import { generateBackgrounds, responsiveMatrix } from "../domain/tasks-special.j
 import { describeTaxonomy } from "../domain/taxonomy.js";
 import { COMPONENT_SOURCES, analyzeRepository, comparisons, parseComponentSource, } from "../domain/components.js";
 import { bootstrapDiff, mean, mrrAtK, ndcgAtK, precisionAtK, recallAtK, categoryPurity } from "../domain/metrics.js";
+import { librarySearch, librarySummary, recommend, review } from "../domain/design-library.js";
 import { rankedIds } from "../domain/retrieval.js";
 const SOURCE_TYPE_MAP = {
     official_documentation: 'official_doc',
@@ -366,7 +367,7 @@ export class ArtServices {
         return { backgrounds: generateBackgrounds({ textColor: input.textColor, count: input.count }) };
     }
     stats() {
-        return { registry: this.registry.stats(), knowledge: this.store.stats(), integrity: this.store.checkIntegrity(), settings: this.settings };
+        return { registry: this.registry.stats(), knowledge: this.store.stats(), integrity: this.store.checkIntegrity(), library: librarySummary(), settings: this.settings };
     }
     /** 七步工作流的可执行版本；返回数据，写文件由 CLI 决定。 */
     async designTask(input) {
@@ -385,6 +386,16 @@ export class ArtServices {
             : auditHtml(html, system.tokens);
         const feedback = feedbackUnit({ decision: `方向 ${chosen.name} 的 token 基线`, evidence: '对比度实算见报告；尚未经过真实用户或生产验证', scope: 'project', category: routed.categories[0] });
         return { task: input.task, routed, retrieved: found, directions, chosen, design_system: system, tokens_css: tokensToCss(system), prototype_html: html, code, code_ext: isAndroid ? 'kt' : 'html', audit, feedback };
+    }
+    // ---------------------------------------------------------------- 设计智能库
+    recommend(input) {
+        return recommend(input);
+    }
+    review(input) {
+        return review(input);
+    }
+    librarySearch(input) {
+        return librarySearch({ query: input.query, domain: input.domain, maxResults: input.maxResults, includeDeprecated: input.includeDeprecated });
     }
     // ---------------------------------------------------------------- 组件
     async githubJson(url) {

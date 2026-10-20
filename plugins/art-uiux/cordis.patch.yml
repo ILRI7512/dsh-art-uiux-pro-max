@@ -1,6 +1,6 @@
 # Art UI/UX Pro Max（TS 原生插件）
 #
-# 13 个工具由 dist/plugin/index.js 直接注册到 ctx.tools；
+# 16 个工具由 dist/plugin/index.js 直接注册到 ctx.tools；
 # 不再启动 Python / MCP 子进程，因此本 bundle 不需要向 profile 树插入 entry。
 # 需要 MCP 兼容层时，单独运行 `node dist/mcp/server.js`。
 []

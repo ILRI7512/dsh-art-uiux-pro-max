@@ -7,8 +7,9 @@
 | 层 | 位置 | 职责 |
 | --- | --- | --- |
 | 领域 | `src/domain/` | 12 分类、注册表、提取、案例证据、七步工作流、组件知识、指标、双语术语 |
+| 设计库 | `src/domain/design-library.ts` + `resources/design-library.json` | 88 风格/192 调色板/74 字体/195 规范/192 配方的离线检索与组装 |
 | 基础设施 | `src/infra/` | HTML 分节、受控 HTTP、SQLite 存储、BLAKE2b 特征哈希、tokenizer |
-| 应用 | `src/application/` | `ArtServices` 统一业务逻辑 + 13 个工具 Schema |
+| 应用 | `src/application/` | `ArtServices` 统一业务逻辑 + 16 个工具 Schema |
 | 适配 | `src/plugin/`、`src/mcp/`、`src/cli.ts`、`src/client/` | DSH 原生插件、MCP stdio、CLI、设置卡 |
 
 依赖方向：`domain` 不依赖 `infra`（`retrieval.ts` 以 `KnowledgeStore` 类型注入）；

@@ -1,5 +1,5 @@
 /**
- * 13 个 DSH 原生工具：参数 Schema + 运行时校验 + 结构化错误。
+ * 16 个 DSH 原生工具：参数 Schema + 运行时校验 + 结构化错误。
  * 与 MCP 适配层共用 ArtServices，避免两套行为。
  */
 import { describeError, ValidationError } from '../core/errors.ts'
@@ -121,6 +121,18 @@ export function buildNativeTools(services: ArtServices): NativeToolDefinition[] 
       object({ text_color: str('正文色，十六进制'), count: int('方案数量', { minimum: 1, maximum: 3 }) }),
       (args) => services.backgrounds({ textColor: optionalString(args, 'text_color'), count: optionalNumber(args, 'count') })),
 
-    define('art_stats', '知识库与注册表的真实统计：资源三态、片段数、等级/分类分布、索引完整性。', object({}), () => services.stats()),
+    define('art_recommend', '按产品/行业/关键词给出完整设计配方：产品类别、88 风格库匹配、16 色令牌、字体搭配、落地页、UX 规范、反模式与 1-10 设计旋钮。',
+      object({ query: str('产品类型、行业或关键词（中英皆可）'), project_name: str('项目名（仅用于回显）'), variance: int('大胆度 1-10', { minimum: 1, maximum: 10 }), motion: int('动效强度 1-10', { minimum: 1, maximum: 10 }), density: int('信息密度 1-10', { minimum: 1, maximum: 10 }) }, ['query']),
+      (args) => services.recommend({ query: requireString(args, 'query'), projectName: optionalString(args, 'project_name'), variance: optionalNumber(args, 'variance'), motion: optionalNumber(args, 'motion'), density: optionalNumber(args, 'density') })),
+
+    define('art_review', '按 195 条 UX / Web / React 规范审查 UI，按严重度排序，附正确/错误代码与交付前检查清单；不冒充真实渲染测试。',
+      object({ target: str('页面/组件 + 问题现象'), platform: str('目标平台', { enum: ['web', 'mobile', 'desktop', 'react-native', 'flutter'] }), max_rules: int('最多返回条数', { minimum: 1, maximum: 30 }) }, ['target']),
+      (args) => services.review({ target: requireString(args, 'target'), platform: optionalString(args, 'platform'), maxRules: optionalNumber(args, 'max_rules') })),
+
+    define('art_library_search', '按域检索内置设计智能库：88 风格 / 192 调色板 / 74 字体 / 25 图表 / 34 落地页 / 192 产品配方 / 195 规范。',
+      object({ query: str('检索词（中英皆可）'), domain: str('限定域；留空则全库', { enum: ['style', 'color', 'chart', 'landing', 'product', 'ux', 'typography', 'react', 'web'] }), max_results: int('最多返回条数', { minimum: 1, maximum: 50 }) }, ['query']),
+      (args) => services.librarySearch({ query: requireString(args, 'query'), domain: optionalString(args, 'domain'), maxResults: optionalNumber(args, 'max_results') })),
+
+    define('art_stats' , '知识库、注册表与设计智能库的真实统计：资源三态、片段数、等级/分类分布、索引完整性、设计库计数。', object({}), () => services.stats()),
   ]
 }

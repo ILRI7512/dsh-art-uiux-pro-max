@@ -1,9 +1,9 @@
 {
   "name": "@local/art-uiux",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "DSH Art UI/UX Pro Max: TypeScript knowledge engine for design taxonomy, evidence-based case analysis, hybrid retrieval, and a seven-step design workflow.",
+  "description": "DSH Art UI/UX Pro Max: TypeScript design knowledge engine with 88 styles, 192 palettes, evidence-based case analysis, hybrid retrieval and a seven-step workflow.",
   "engines": {
     "node": ">=22.6"
   },
@@ -20,8 +20,10 @@
   },
   "files": [
     "dist",
+    "resources",
     "README.md",
     "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
     "plugins/art-uiux/cordis.patch.yml",
     "plugins/art-uiux/icon.svg",
     "plugins/art-uiux/locale/*.json"

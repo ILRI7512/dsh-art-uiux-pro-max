@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { apply } from '../../src/plugin/index.ts'
 import { cleanup, makeRoot, seedResource } from '../helpers.ts'
 
-test('插件注册 13 个工具与设置路由，卸载可清理', () => {
+test('插件注册 16 个工具与设置路由，卸载可清理', () => {
   const root = makeRoot([seedResource()])
   const tools = new Map<string, unknown>()
   const routes: string[] = []
@@ -16,7 +16,7 @@ test('插件注册 13 个工具与设置路由，卸载可清理', () => {
   }
   try {
     apply(ctx as any, { home: root, dataDir: join(root, 'data') })
-    assert.equal(tools.size, 13)
+    assert.equal(tools.size, 16)
     assert.ok(tools.has('art_search') && tools.has('art_learn'))
     assert.deepEqual(routes, ['/art-uiux/api/settings', '/art-uiux/api/stats'])
   } finally { cleanup(root) }

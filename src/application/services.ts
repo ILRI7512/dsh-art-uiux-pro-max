@@ -1,5 +1,5 @@
 /**
- * 应用服务：CLI、13 个原生 DSH 工具与 MCP 适配层共用同一份业务逻辑。
+ * 应用服务：CLI、16 个原生 DSH 工具与 MCP 适配层共用同一份业务逻辑。
  * 任何“未验证”结论都在返回值里带 warnings，不靠调用方自觉。
  */
 import { existsSync, readFileSync } from 'node:fs'
@@ -29,6 +29,7 @@ import {
   type RepositoryInfo, type ComponentSource,
 } from '../domain/components.ts'
 import { bootstrapDiff, mean, mrrAtK, ndcgAtK, precisionAtK, recallAtK, categoryPurity } from '../domain/metrics.ts'
+import { librarySearch, librarySummary, recommend, review } from '../domain/design-library.ts'
 import { rankedIds } from '../domain/retrieval.ts'
 
 export interface ArtServicesOptions {
@@ -408,7 +409,7 @@ export class ArtServices {
   }
 
   stats(): Record<string, unknown> {
-    return { registry: this.registry.stats(), knowledge: this.store.stats(), integrity: this.store.checkIntegrity(), settings: this.settings }
+    return { registry: this.registry.stats(), knowledge: this.store.stats(), integrity: this.store.checkIntegrity(), library: librarySummary(), settings: this.settings }
   }
 
   /** 七步工作流的可执行版本；返回数据，写文件由 CLI 决定。 */
@@ -429,7 +430,22 @@ export class ArtServices {
     return { task: input.task, routed, retrieved: found, directions, chosen, design_system: system, tokens_css: tokensToCss(system), prototype_html: html, code, code_ext: isAndroid ? 'kt' : 'html', audit, feedback }
   }
 
+  // ---------------------------------------------------------------- 设计智能库
+
+  recommend(input: { query: string; projectName?: string; variance?: number; motion?: number; density?: number }): Record<string, unknown> {
+    return recommend(input)
+  }
+
+  review(input: { target: string; platform?: string; maxRules?: number }): Record<string, unknown> {
+    return review(input)
+  }
+
+  librarySearch(input: { query: string; domain?: string; maxResults?: number; includeDeprecated?: boolean }): Record<string, unknown> {
+    return librarySearch({ query: input.query, domain: input.domain as never, maxResults: input.maxResults, includeDeprecated: input.includeDeprecated })
+  }
+
   // ---------------------------------------------------------------- 组件
+
 
   private async githubJson(url: string): Promise<Record<string, unknown>> {
     const target = await assertSafeHttpUrl(url, { allowPrivateNetworks: this.settingsValue.allowPrivateNetworks })

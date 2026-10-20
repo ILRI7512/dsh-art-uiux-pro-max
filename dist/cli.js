@@ -57,11 +57,39 @@ async function main() {
   component-source --repo KEY --file PATH [--name NAME]
   stats [--json]
   eval [--json]
+  recommend <query> [--variance N] [--motion N] [--density N]
+  review <target> [--platform web|mobile|desktop|react-native|flutter]
+  library <query> [--domain style|color|chart|landing|product|ux|typography|react|web]
   import-legacy [--from PATH]  从旧 Python 引擎导入 chunks
   mcp                          stdio MCP 兼容层
 
 数据目录: ${services.dataDir}
 `);
+            return;
+        }
+        if (command === 'recommend') {
+            const { values, positionals } = parseArgs({ args: rest, options: { variance: { type: 'string' }, motion: { type: 'string' }, density: { type: 'string' }, json: { type: 'boolean' } }, allowPositionals: true });
+            const query = positionals.join(' ').trim();
+            if (!query)
+                throw new Error('recommend 需要产品/行业查询');
+            const result = services.recommend({ query, variance: numberValue(values, 'variance'), motion: numberValue(values, 'motion'), density: numberValue(values, 'density') });
+            printJson(result);
+            return;
+        }
+        if (command === 'review') {
+            const { values, positionals } = parseArgs({ args: rest, options: { platform: { type: 'string' }, 'max-rules': { type: 'string' }, json: { type: 'boolean' } }, allowPositionals: true });
+            const target = positionals.join(' ').trim();
+            if (!target)
+                throw new Error('review 需要页面/问题描述');
+            printJson(services.review({ target, platform: value(values, 'platform'), maxRules: numberValue(values, 'max-rules') }));
+            return;
+        }
+        if (command === 'library') {
+            const { values, positionals } = parseArgs({ args: rest, options: { domain: { type: 'string' }, limit: { type: 'string' }, 'include-deprecated': { type: 'boolean' }, json: { type: 'boolean' } }, allowPositionals: true });
+            const query = positionals.join(' ').trim();
+            if (!query)
+                throw new Error('library 需要检索词');
+            printJson(services.librarySearch({ query, domain: value(values, 'domain'), maxResults: numberValue(values, 'limit'), includeDeprecated: bool(values, 'include-deprecated') }));
             return;
         }
         if (command === 'import-legacy') {

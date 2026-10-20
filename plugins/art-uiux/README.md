@@ -5,7 +5,7 @@ DSH Art UI/UX Pro Max 的插件包（TypeScript 原生，无 Python / MCP 子进
 | 项 | 值 |
 | --- | --- |
 | 插件名 | `@local/art-uiux` |
-| 工具 | 13 个 `art_*` 原生工具 |
+| 工具 | 16 个 `art_*` 原生工具 |
 | 入口 | `dist/plugin/index.js`（`npm run build` 产物） |
 | 设置卡 | `/art-uiux/api/settings` + `/art-uiux/api/stats` |
 | 数据 | `<repo>/data/knowledge.sqlite3`、`data/registry.json`、`data/settings.json` |
